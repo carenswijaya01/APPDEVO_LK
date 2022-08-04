@@ -21,6 +21,7 @@ DB_DATABASE=nama_database
 DB_USERNAME=root
 DB_PASSWORD=
 ```
-5. lalu jalankan perintah `php artisan migrate --seed` untuk membuat tabel dan seeder. **Jangan membuat tabel langsung lewat phpmyadmin**.
-6. Jalankan `php artisan serve` untuk memulai server dan bukak `http://localhost:8000`
+5. generate key dengan `php artisan key:generate`
+6. lalu jalankan perintah `php artisan migrate --seed` untuk membuat tabel dan seeder. **Jangan membuat tabel langsung lewat phpmyadmin**.
+7. Jalankan `php artisan serve` untuk memulai server dan bukak `http://localhost:8000`
 
