@@ -19,7 +19,7 @@
             <option value="3">FTI Days</option>
         </select><br>
         
-        <input type="hidden" name="user_id" value="">
+        <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
 
         <label for="file">Upload file:</label><br>
         <input type="file" name="file" id="file" accept=".pdf" required><br>

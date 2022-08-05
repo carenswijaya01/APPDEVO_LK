@@ -15,7 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('welcome');
+});
+
+// Mahasiswa
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/home', fn () => view('home'));
+    Route::get('/user/update-password', fn () => view('auth.mahasiswa.update-password'))->name('update-password-user');
 });
 
 Route::get('/registration-program', function () {

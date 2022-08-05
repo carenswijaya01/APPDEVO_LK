@@ -10,4 +10,8 @@ class MemberProgram extends Model {
 
     // protected $table = 'member_programs';
     public $timestamps = false;
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }
