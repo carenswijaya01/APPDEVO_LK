@@ -20,10 +20,11 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
+        $input['nim'] = explode('@', $input['email'])[0];
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:27', 'regex:/\d{9}@student.uksw.edu/', Rule::unique(User::class),],
-            'nim' => ['required', 'numeric', 'digits:9', Rule::unique(User::class),],
+            'nim' => ['required', Rule::unique(User::class),],
             'password' => $this->passwordRules(),
         ], ['regex' => 'The :attribute must use student email'])->validate();
         return User::create([
