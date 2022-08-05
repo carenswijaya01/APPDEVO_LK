@@ -13,9 +13,6 @@
         <label for="email">Email</label>
         <input type="email" name="email" id="email" value="{{ old('email') }}" >
         <br>
-        <label for="nim">NIM</label>
-        <input type="number" name="nim" id="nim" value="{{ old('nim') }}" >
-        <br>
         <label for="password">Password</label>
         <input type="password" name="password" id="password" value="{{ old('password') }}" >
         <br>
