@@ -11,12 +11,11 @@
 
     <form action="/registration-program" method="post" enctype="multipart/form-data">
         @csrf
-        {{-- nanti bedasarkan program_id --}}
         <label for="program">Kegiatan :</label>
         <select id="program" name="program_id"> 
-            <option value="1">LDKM</option>
-            <option value="2">OMB</option>
-            <option value="3">FTI Days</option>
+            @foreach ($programs as $program)
+                <option value="{{ $program->program_id }}">{{ $program->title }}</option>
+            @endforeach
         </select><br>
         
         <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">

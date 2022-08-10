@@ -14,11 +14,10 @@ return new class extends Migration {
         Schema::create('member_programs', function (Blueprint $table) {
             $table->integer('member_program')->autoIncrement();
             $table->integer('program_id');
-            $table->integer('user_id')->nullable();
-            $table->string('file');
+            $table->integer('user_id');
+            $table->string('file')->unique();
             $table->string('reason');
-            $table->enum('status', ['mendaftar', 'ditolak', 'diterima']);
-            // yang nullable() buat sementara aja
+            $table->enum('status', ['mendaftar', 'ditolak', 'diterima'])->default('mendaftar');
         });
     }
 

@@ -23,17 +23,30 @@ class DatabaseSeeder extends Seeder {
         // ]);
 
         DB::table('users')->insert([
-            'name' => Str::random(10),
-            'email' => Str::random(10) . '@gmail.com',
+            'name' => 'test',
+            'email' => 'test@gmail.com',
             'password' => Hash::make('password'),
             'nim' => '672020180',
         ]);
 
         DB::table('users')->insert([
-            'name' => Str::random(10),
-            'email' => Str::random(10) . '@gmail.com',
+            'name' => 'test2',
+            'email' => 'test2@gmail.com',
             'password' => Hash::make('password'),
             'nim' => '672020181',
+        ]);
+
+
+        DB::table('programs')->insert([
+            'title' => 'LDKM',
+        ]);
+
+        DB::table('programs')->insert([
+            'title' => 'OMB',
+        ]);
+
+        DB::table('programs')->insert([
+            'title' => 'FTI Days',
         ]);
     }
 }

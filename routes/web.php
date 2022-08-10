@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MemberProgramController;
+use App\Models\MemberProgram;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,7 +25,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/user/update-password', fn () => view('auth.mahasiswa.update-password'))->name('update-password-user');
 });
 
-Route::get('/registration-program', function () {
-    return view('registration-program');
-});
+// Daftar-kegiatan
+Route::get('/registration-program', [MemberProgramController::class, 'index'])->middleware('auth');
 Route::post('/registration-program', [MemberProgramController::class, 'store']);
+
+Route::get('/validate-memberprogram', [MemberProgramController::class, 'show']);
+Route::post('/validate-memberprogram', [MemberProgramController::class, 'update']);
