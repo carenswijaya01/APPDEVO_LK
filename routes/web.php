@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\MemberProgramController;
 use App\Models\MemberProgram;
+use App\Http\Controllers\pointsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,6 +47,8 @@ Route::group([
 //        DAFTAR-KEGIATAN
         Route::get('/validate-memberprogram', [MemberProgramController::class, 'show']);
         Route::post('/validate-memberprogram', [MemberProgramController::class, 'update']);
+//        INPUT POINT
+        route::resource('/points',pointsController::class);
     });
 });
 
@@ -57,5 +60,4 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/registration-program', [MemberProgramController::class, 'index']);
     Route::post('/registration-program', [MemberProgramController::class, 'store']);
 });
-
 
