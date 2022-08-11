@@ -12,4 +12,5 @@ class Point extends Model
     protected $table = 'points';
     protected $primaryKey = 'point_id';
     public $incrementing = true;
+    public $timestamps = false;
 }

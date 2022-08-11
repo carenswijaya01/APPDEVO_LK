@@ -7,7 +7,7 @@
     <title>POINTS</title>
 </head>
 <body>
-    <a href="/points/tambah">+ tambah Data baru</a>
+    <a href="{{url('points/create')}}"> + tambah Data baru</a>
     <br/>
     <br/>
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\pointsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,9 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/points', function () {
-    return view('points');
-});
+//Route::get('/points', function () {
+//    return view('points');
+//});
 Route::get('/controllers/points', function () {
     return view('points');
 });
@@ -31,10 +32,9 @@ Route::get('/controllers/points', function () {
 //route::get('/post/{id}','PointsController@update');
 //route::get('/post/{id}','PointsController@destroy');
 
-route::resource('/post','PointsController');
-route::get('/points','PointsController@index');
-route::get('points','PointsController@index');
-
+route::resource('/points',pointsController::class);
+//route::get('/points','PointsController@index');
+//route::get('points','PointsController@index');
 Route::get('/index', function () {
     return view('index');
 });
