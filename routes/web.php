@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\MemberProgramController;
+use App\Models\MemberProgram;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +36,9 @@ Route::group([
         Route::view('/manage','manage-point')->name('manage')->middleware('can:role,"admin"');
         Route::view('/admin','crud-admin')->name('admin')->middleware('can:role,"superadmin"');
         Route::view('/point','crud-point-limit')->name('point')->middleware('can:role,"superadmin"');
+//        Daftar-kegiatan
+        Route::get('/validate-memberprogram', [MemberProgramController::class, 'show']);
+        Route::post('/validate-memberprogram', [MemberProgramController::class, 'update']);
     });
 });
 
@@ -41,4 +46,9 @@ Route::group([
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/home', fn() => view('home'));
     Route::get('/user/update-password', fn() => view('auth.mahasiswa.update-password'))->name('update-password-user');
+    // Daftar-kegiatan
+    Route::get('/registration-program', [MemberProgramController::class, 'index']);
+    Route::post('/registration-program', [MemberProgramController::class, 'store']);
 });
+
+
