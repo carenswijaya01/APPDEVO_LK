@@ -21,14 +21,14 @@ class AdminSeeder extends Seeder
         //     'role'     => 'admin',
         //     'password' => bcrypt('password'),
         // ]);
-    
+
         // Admin::create([
         //     'name'     => 'Editor',
         //     'email'    => 'editor@localhost.com',
         //     'role'    => 'editor',
         //     'password' => bcrypt('password'),
         // ]);
-    
+
         // Admin::create([
         //     'name'     => 'Operator',
         //     'email'    => 'operator@localhost.com',
@@ -38,15 +38,15 @@ class AdminSeeder extends Seeder
 
         Admin::create([
             'name'      => 'sadmin',
-            'email'     => 'sadmin@localhost.com',
-            'nim'       => '672021999',
+            'email'     => 'sadmin@uksw.edu',
+            'nim'       => '11111111',
             'role'      => 'superadmin',
             'password'  => bcrypt('sadmin'),
         ]);
-    
+
         Admin::create([
             'name'      => 'admin',
-            'email'     => 'admin@localhost.com',
+            'email'     => 'admin@uksw.edu',
             'nim'       => '672021888',
             'role'      => 'admin',
             'password'  => bcrypt('admin'),

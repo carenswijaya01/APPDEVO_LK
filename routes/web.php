@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// ROOT (GUEST)
 Route::get('/', function () {
     return view('welcome');
 });
@@ -24,29 +25,35 @@ Route::group([
     'namespace'=>'App\\Http\\Controllers',
 ],function () {
 
+//    LOGIN ADMIN
     Route::get('login','LoginAdminController@formLogin')->name('admin.login');
     Route::post('login','LoginAdminController@login');
 
-    Route::middleware(['auth:admin'])->group(function () {
+//    SUPER ADMIN
+    Route::middleware(['auth:admin','can:role,"superadmin"'])->group(function (){
+        Route::view('/admin','crud-admin')->name('admin');
+        Route::view('/point','crud-point-limit')->name('point');
+    });
+
+//    ADMIN
+    Route::middleware(['auth:admin', 'can:role,"admin"'])->group(function () {
         Route::post('logout','LoginAdminController@logout')->name('admin.logout');
         Route::view('/','dashboard')->name('dashboard');
-        Route::view('/pengumuman','crud-pengumuman')->name('pengumuman')->middleware('can:role,"admin"');
-        Route::view('/kegiatan','crud-kegiatan')->name('kegiatan')->middleware('can:role,"admin"');
-        Route::view('/validasi','validasi-pendaftar')->name('validasi')->middleware('can:role,"admin"');
-        Route::view('/manage','manage-point')->name('manage')->middleware('can:role,"admin"');
-        Route::view('/admin','crud-admin')->name('admin')->middleware('can:role,"superadmin"');
-        Route::view('/point','crud-point-limit')->name('point')->middleware('can:role,"superadmin"');
-//        Daftar-kegiatan
+        Route::view('/pengumuman','crud-pengumuman')->name('pengumuman');
+        Route::view('/kegiatan','crud-kegiatan')->name('kegiatan');
+        Route::view('/validasi','validasi-pendaftar')->name('validasi');
+        Route::view('/manage','manage-point')->name('manage');
+//        DAFTAR-KEGIATAN
         Route::get('/validate-memberprogram', [MemberProgramController::class, 'show']);
         Route::post('/validate-memberprogram', [MemberProgramController::class, 'update']);
     });
 });
 
-// Mahasiswa
+// MAHASISWA
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/home', fn() => view('home'));
     Route::get('/user/update-password', fn() => view('auth.mahasiswa.update-password'))->name('update-password-user');
-    // Daftar-kegiatan
+    // DAFTAR-KEGIATAN
     Route::get('/registration-program', [MemberProgramController::class, 'index']);
     Route::post('/registration-program', [MemberProgramController::class, 'store']);
 });
