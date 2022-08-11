@@ -36,3 +36,9 @@ Route::group([
         Route::view('/point','crud-point-limit')->name('point')->middleware('can:role,"superadmin"');
     });
 });
+
+// Mahasiswa
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/home', fn() => view('home'));
+    Route::get('/user/update-password', fn() => view('auth.mahasiswa.update-password'))->name('update-password-user');
+});
