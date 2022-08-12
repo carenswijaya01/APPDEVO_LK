@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\PengumumanController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,12 @@ Route::get('/', function () {
 });
 
 Route::resource('admin', AdminController::class);
+
+// Kegiatan
+Route::get('/daftarKegiatan', '\App\Http\Controllers\KegiatanController@index')->name('daftarKegiatan');
+Route::get('/editKegiatan/{id}', '\App\Http\Controllers\KegiatanController@edit')->name('editKegiatan');
+Route::post('/updateKegiatan/{id}', '\App\Http\Controllers\KegiatanController@update')->name('updateKegiatan');
+Route::get('/deleteKegiatan/{id}', '\App\Http\Controllers\KegiatanController@destroy')->name('deleteKegiatan');
 
 // Pengumuman
 Route::resource('pengumuman', PengumumanController::class);
