@@ -42,13 +42,13 @@ class AdminController extends Controller
             'email'     => 'required',
             'password'   => 'required | confirmed'
         ]);
-    
+
         $admin = Admin::create($data + ['role'     =>  'admin',]);
-    
-        if($admin){
+
+        if ($admin) {
             //redirect dengan pesan sukses
             return redirect()->back()->with(['success' => 'Data Berhasil Disimpan!']);
-        }else{
+        } else {
             //redirect dengan pesan error
             return redirect()->back()->with(['error' => 'Data Gagal Disimpan!']);
         }
@@ -85,7 +85,7 @@ class AdminController extends Controller
      */
     public function update(Request $request, Admin $admin)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'nim' => 'required',
             'name' => 'required',
             'email' => 'required',
@@ -97,7 +97,7 @@ class AdminController extends Controller
             'email' => $request->email,
             'password' => $request->password
         ]);
-        return redirect()->back()->with('success','Data berhasil diubah');
+        return redirect()->back()->with('success', 'Data berhasil diubah');
     }
 
     /**
@@ -109,6 +109,6 @@ class AdminController extends Controller
     public function destroy(Admin $admin)
     {
         $admin->delete();
-        return redirect()->back()->with(['success','Data berhasil dihapus!']);
+        return redirect()->back()->with(['success', 'Data berhasil dihapus!']);
     }
 }

@@ -2,7 +2,7 @@
 
 
 use App\Http\Controllers\KegiatanController;
-
+use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\AdminController;
 
 use Illuminate\Support\Facades\Route;
@@ -32,3 +32,6 @@ Route::post('/updateKegiatan/{id}', '\App\Http\Controllers\KegiatanController@up
 Route::get('/deleteKegiatan/{id}', '\App\Http\Controllers\KegiatanController@destroy')->name('deleteKegiatan');
 
 Route::resource('admin', AdminController::class);
+
+// Pengumuman
+Route::resource('pengumuman', PengumumanController::class);
