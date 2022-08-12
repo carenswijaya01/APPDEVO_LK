@@ -42,7 +42,7 @@ class AdminController extends Controller
             'email'     => 'required',
             'password'   => 'required | confirmed'
         ]);
-
+        $data['password'] = Hash::make($data['password']);
         $admin = Admin::create($data + ['role'     =>  'admin',]);
 
         if ($admin) {
@@ -85,11 +85,11 @@ class AdminController extends Controller
      */
     public function update(Request $request, Admin $admin)
     {
-        $this->validate($request, [
+        $data = $this->validate($request, [
             'nim' => 'required',
             'name' => 'required',
             'email' => 'required',
-            'password' => 'required'
+            'password' => 'required | confirmed'
         ]);
         $admin->update([
             'nim' => $request->nim,
@@ -97,6 +97,7 @@ class AdminController extends Controller
             'email' => $request->email,
             'password' => $request->password
         ]);
+        $data['password'] = Hash::make($data['password']);
         return redirect()->back()->with('success', 'Data berhasil diubah');
     }
 
