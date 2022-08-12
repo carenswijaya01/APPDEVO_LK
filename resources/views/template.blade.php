@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
-
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
                 <a class="navbar-brand" href="#">{{ config('app.name') }}</a>
@@ -26,32 +25,32 @@
                         @else
                         @can('role','admin')
                             <li class="nav-item">
-                                <a href="{{ route('pengumuman') }}" class="nav-link">CRUD Pengumuman</a>
+                                <a href="" class="nav-link">CRUD Pengumuman</a>
                             </li>
                         @endcan
                         @can('role','admin')
                             <li class="nav-item">
-                                <a href="{{ route('kegiatan') }}" class="nav-link">CRUD Pengumuman</a>
+                                <a href="" class="nav-link">CRUD Pengumuman</a>
                             </li>
                         @endcan
                         @can('role','admin')
                             <li class="nav-item">
-                                <a href="{{ route('validasi') }}" class="nav-link">CRUD Pengumuman</a>
+                                <a href="" class="nav-link">CRUD Pengumuman</a>
                             </li>
                         @endcan
                         @can('role','admin')
                             <li class="nav-item">
-                                <a href="{{ route('manage') }}" class="nav-link">CRUD Pengumuman</a>
+                                <a href="" class="nav-link">CRUD Pengumuman</a>
                             </li>
                         @endcan
                         @can('role','superadmin')
                             <li class="nav-item">
-                                <a href="{{ route('admin') }}" class="nav-link">CRUD Admin</a>
+                                <a href="{{ route('admin.index') }}" class="nav-link">CRUD Admin</a>
                             </li>
                         @endcan
                         @can('role','superadmin')
                             <li class="nav-item">
-                                <a href="{{ route('point') }}" class="nav-link">CRUD Point&Limit</a>
+                                <a href="" class="nav-link">CRUD Point&Limit</a>
                             </li>
                         @endcan
                         <li class="nav-item dropdown">

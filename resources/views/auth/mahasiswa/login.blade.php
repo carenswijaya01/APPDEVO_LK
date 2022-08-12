@@ -7,7 +7,7 @@
         @endforeach
     @endif
 
-    <form action="{{route('login')}}" method="post">
+    <form action="{{route('login')}}" method="post" enctype="multipart/form-data">
         @csrf
         <label for="email"></label><input type="email" name="email" id="email" placeholder="email">
         <br>

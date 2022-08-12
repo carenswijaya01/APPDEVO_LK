@@ -25,7 +25,7 @@ class pointsController extends Controller
         $model->point_id= $Request->point_id;
         $model->admin_id= $Request->admin_id;
         $model->user_id= $Request->user_id;
-        $model->file= $Request ->file;
+        $model->file= $Request->file;
         $model->type_point_id= $Request->type_point_id;
         $model->point = $Request->point;
         $model->save();
