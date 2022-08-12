@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PengumumanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,4 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::resource('admin', AdminController::class);
+
+// Pengumuman
+Route::resource('pengumuman', PengumumanController::class);
