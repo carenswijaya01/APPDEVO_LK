@@ -45,24 +45,31 @@ Route::get('/regis', function () {
     return view('/loginpage/regis');
 });
 
-Route::get('/AdminPengumuman', function () {
-    return view('/admin/AdminPengumuman');
+Route::get('/admin-pengumuman', function () {
+    return view('admin/AdminPengumuman');
 });
 
-Route::get('/EditPengumuman', function () {
-    return view('/admin/EditPegumuman');
+Route::get('/admin-input-poin', function () {
+    return view('admin/InputPoin');
 });
 
-Route::get('/InputPoin', function () {
-    return view('/admin/InputPoin');
+Route::get('/admin-kepanitiaan', function () {
+    return view('admin/Kepanitiaan');
 });
 
-Route::get('/Kepanitiaan', function () {
-    return view('/admin/Kepanitiaan');
+Route::get('/admin-edit-pengumuman', function () {
+    return view('admin/EditPengumuman');
 });
 
-Route::get('/poin', function () {
-    return view('/admin/poin');
+Route::get('/admin-poin', function () {
+    return view('admin/poin');
 });
 
+Route::get('/admin-list-kepanitiaan', function () {
+    return view('admin/listKepanitiaan');
+});
+
+Route::get('/admin-validasi', function () {
+    return view('admin/Validasi');
+});
 
