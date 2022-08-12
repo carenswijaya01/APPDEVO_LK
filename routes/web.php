@@ -36,24 +36,5 @@ Route::resource('admin', AdminController::class);
 // Pengumuman
 Route::resource('pengumuman', PengumumanController::class);
 
-//dashboard admin
-Route::get('/admin-pengumuman', function () {
-    return view('admin/AdminPengumuman');
-});
 
-Route::get('/admin-input-poin', function () {
-    return view('admin/InputPoin');
-});
-
-Route::get('/admin-kepanitiaan', function () {
-    return view('admin/Kepanitiaan');
-});
-
-Route::get('/admin-edit-pengumuman', function () {
-    return view('admin/EditPengumuman');
-});
-
-Route::get('/admin-poin', function () {
-    return view('admin/poin');
-});
 
