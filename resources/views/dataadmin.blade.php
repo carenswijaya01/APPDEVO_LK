@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-        <title>Data Admin</title>
+    <title>Data Admin</title>
 </head>
+
 <body>
     <h1>Data Admin</h1>
+<<<<<<< HEAD
         <table border="1">
             <tr>
                 <th>No.</th>

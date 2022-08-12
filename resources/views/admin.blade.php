@@ -5,16 +5,18 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>CRUD Admin</title>
 </head>
+
 <body>
     <h1> Create Admin Account</h1>
     <ul>
         <form action="{{ route('admin.store') }}" method="POST">
             @csrf
             <label for="nim">NIM</label>
-            <input type="text" name="nim" id="nim" placeholder="Enter your NIM" required >
+            <input type="text" name="nim" id="nim" placeholder="Enter your NIM" required>
             <br>
             <label for="name">Nama</label>
             <input type="text" name="name" id="name" placeholder="Enter your name" required>
@@ -30,20 +32,19 @@
             <br>
             <input type="submit" name="submit" value="Buat Akun">
         </form>
-       
+
             <a href="{{ route('admin.index')}}">Lihat Data</a>
             <br><br><br>
 
 
     @if($errors->any())
         @foreach($errors->all() as $error)
-            <p>{{ $error }}</p>
+        <p>{{ $error }}</p>
         @endforeach
     @endif
+
     @if (session('success'))
         <p>{{session('success')}}</p>
     @endif
 </body>
 </html>
-
-

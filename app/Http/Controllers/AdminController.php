@@ -45,10 +45,10 @@ class AdminController extends Controller
         $data['password'] = Hash::make($data['password']);
         $admin = Admin::create($data + ['role'     =>  'admin',]);
 
-        if($admin){
+        if ($admin) {
             //redirect dengan pesan sukses
             return redirect()->back()->with(['success' => 'Data Berhasil Disimpan!']);
-        }else{
+        } else {
             //redirect dengan pesan error
             return redirect()->back()->with(['error' => 'Data Gagal Disimpan!']);
         }
@@ -107,6 +107,6 @@ class AdminController extends Controller
     public function destroy(Admin $admin)
     {
         $admin->delete();
-        return redirect()->back()->with(['success','Data berhasil dihapus!']);
+        return redirect()->back()->with(['success', 'Data berhasil dihapus!']);
     }
 }

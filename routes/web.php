@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\MemberProgramController;
 use App\Http\Controllers\pointsController;
+use App\Http\Controllers\KegiatanController;
+use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\AdminController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,6 +53,15 @@ Route::group([
         Route::post('/validate-memberprogram', [MemberProgramController::class, 'update']);
         //        INPUT POINT
         route::resource('/points', pointsController::class);
+        // Kegiatan
+        Route::get('/daftarKegiatan', 'KegiatanController@index')->name('daftarKegiatan');
+        Route::get('/tambahKegiatan', 'KegiatanController@create')->name('tambahKegiatan');
+        Route::post('/simpanKegiatan', 'KegiatanController@store')->name('simpanKegiatan');
+        Route::get('/editKegiatan/{id}', 'KegiatanController@edit')->name('editKegiatan');
+        Route::post('/updateKegiatan/{id}', 'KegiatanController@update')->name('updateKegiatan');
+        Route::get('/deleteKegiatan/{id}', 'KegiatanController@destroy')->name('deleteKegiatan');
+        // Pengumuman
+        Route::resource('pengumuman', PengumumanController::class);
     });
 });
 
@@ -61,3 +73,4 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/registration-program', [MemberProgramController::class, 'index']);
     Route::post('/registration-program', [MemberProgramController::class, 'store']);
 });
+

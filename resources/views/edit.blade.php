@@ -20,10 +20,10 @@
             <input type="email" name="email" id="email" placeholder="Enter your email address" required value="{{$admin->email}}">
             <br>
             <label for="password">Password</label>
-            <input type="password" name="password" id="password" placeholder="Enter your password"  value="{{$admin->password}}">
+            <input type="password" name="password" id="password" placeholder="Enter your password">
             <br>
             <label for="password2">Konfirmasi Password</label>
-            <input type="password" name="password_confirmation" id="password2" placeholder="Confirm your password"  value="{{$admin->password}}">
+            <input type="password" name="password_confirmation" id="password2" placeholder="Confirm your password" >
             <br>
             <input type="submit" name="Update" value="Edit Akun">
         </form>
