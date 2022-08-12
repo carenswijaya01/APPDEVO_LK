@@ -29,7 +29,7 @@
         </div>
         <div class="mb-3">
           <label for="validationDefault03" class="form-label">Email</label>
-          <input type="email" class="form-control" id="validationDefault03" placeholder="name@example.com" required>
+          <input type="email" class="form-control" id="validationDefault03" placeholder="NIM@student.uksw.edu" required>
         </div>
         <div class="mb-3">
           <label for="validationDefaultKTM" class="form-label">Input Kartu Tanda Mahasiswa</label>
@@ -37,19 +37,20 @@
         </div>
         <div class="mb-3">
           <label for="validationDefaultOMB" class="form-label">Input Sertifikat OMB</label>
-          <input class="form-control" type="file" id="formFile" accept="application/pdf" required>
+          <input class="form-control" type="file" id="validationDefaultOMB" accept="application/pdf" required>
         </div>
         <div class="mb-3">
           <label for="validationDefaultLDKM" class="form-label">Input Sertifikat LDKM</label>
           <input class="form-control" type="file" id="validationDefaultLDKM" accept="application/pdf" required>
         </div>
         <div class="col-12">
-          <button class="btn btn-primary" type="submit">Submit form</button>
+          <button class="btn btn-primary" id="submit-form" type="submit" onclick="sumbitPrompt();">Submit</button> form</button>
         </div>
       </div>
     </form>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="./js/app.js"></script>
   </body>
 </html>
