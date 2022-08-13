@@ -2,10 +2,9 @@
 
 use App\Http\Controllers\MemberProgramController;
 use App\Http\Controllers\pointsController;
-use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\AdminController;
-
+use App\Http\Controllers\TypePointController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +28,7 @@ Route::group([
     'namespace' => 'App\\Http\\Controllers',
 ], function () {
 
+
     //    LOGIN ADMIN
     Route::get('login', 'LoginAdminController@formLogin')->name('admin.login');
     Route::post('login', 'LoginAdminController@login');
@@ -43,7 +43,9 @@ Route::group([
     Route::middleware(['auth:admin', 'can:role,"superadmin"'])->group(function () {
         // CRUD ADMIN
         Route::resource('/admin', AdminController::class);
-        Route::get('/type-point', fn () => view('crud-point-limit'));
+        // TYPE POINT
+        Route::get('/type-point', [TypePointController::class, 'index'])->name('type-point.index');
+        Route::put('/type-point',[TypePointController::class,'update'])->name('type-point.update');
     });
 
     //    ADMIN

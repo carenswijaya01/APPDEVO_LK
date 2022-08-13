@@ -18,16 +18,18 @@ class pointsController extends Controller
         $model = new Point;
     return view('create',compact('model'));
     }
-    public function store(Request $Request)
+    public function store(Request $request)
     {
-        //dd($Request);
+        // $validated = $this->validate($request,[
+
+        // ]);
         $model = new Point;
-        $model->point_id= $Request->point_id;
-        $model->admin_id= $Request->admin_id;
-        $model->user_id= $Request->user_id;
-        $model->file= $Request->file;
-        $model->type_point_id= $Request->type_point_id;
-        $model->point = $Request->point;
+        $model->point_id= $request->point_id;
+        $model->admin_id= $request->admin_id;
+        $model->user_id= $request->user_id;
+        $model->file= $request->file;
+        $model->type_point_id= $request->type_point_id;
+        $model->point = $request->point;
         $model->save();
         return redirect('/admin/points');
     }
@@ -38,7 +40,7 @@ class pointsController extends Controller
     {
 
     }
-    public function update(Request $Request)
+    public function update(Request $request)
     {
 
     }

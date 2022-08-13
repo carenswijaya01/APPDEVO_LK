@@ -13,14 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('points', function (Blueprint $table) {
+        Schema::create('type_points', function (Blueprint $table) {
             $table->id();
-            // $table->integer('point_id')->autoIncrement();
-            $table->foreignId('admin_id')->nullable();
-            $table->foreignId('user_id')->nullable();
-            $table->string('file');
-            $table->foreignId('type_point_id');
-            $table->integer('point');
+            $table->string('name')->unique();
+            $table->integer('max_point');
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('points');
+        Schema::dropIfExists('type_points');
     }
 };
