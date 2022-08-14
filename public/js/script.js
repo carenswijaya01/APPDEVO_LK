@@ -61,3 +61,15 @@ function getImagePreview(event)
     imagediv.appendChild(newimg);
 }
 
+
+function myFunction() {
+    var txt;
+    if (confirm("Yakin Untuk Menghapus?")) {
+
+    }
+    else {
+
+    }
+  }
+
+ 
