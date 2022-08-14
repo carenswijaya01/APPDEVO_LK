@@ -44,7 +44,7 @@ class KegiatanController extends Controller
             'nama_ketua_panitia' => $request->nama_ketua_panitia,
             'tgl_kegiatan' => $request->tgl_kegiatan,
         ]);
-        return redirect('/daftarKegiatan');
+       return redirect('/admin/daftarKegiatan');
     }
 
     /**
@@ -81,7 +81,7 @@ class KegiatanController extends Controller
     {
         $keg = Kegiatan::findorfail($id);
         $keg->update($request->all());
-        return redirect('/daftarKegiatan');
+        return redirect('/admin/daftarKegiatan');
     }
 
     /**

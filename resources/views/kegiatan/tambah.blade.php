@@ -62,7 +62,7 @@
                         </div>
                     </div>
                     <div class="row justify-content-center">
-                        <a href="{{url('/daftarKegiatan')}}" class="btn btn-danger mt-4 col-2 mx-2">Cancel</a>
+                        <a href="{{url('/admin/daftarKegiatan')}}" class="btn btn-danger mt-4 col-2 mx-2">Cancel</a>
                         <button class="btn btn-md btn-dark mt-4 col-3 " type="submit">Submit</button>
                     </div>
                 </div>

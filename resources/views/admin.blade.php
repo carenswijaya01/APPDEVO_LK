@@ -32,22 +32,19 @@
             <br>
             <input type="submit" name="submit" value="Buat Akun">
         </form>
-        <form action="{{ route('admin.index') }}" method="GET">
-            @csrf
-            @method('put')
-            <input type="submit" name="lihatdata" value="Lihat Data">
-        </form>
-        <br><br><br>
+
+            <a href="{{ route('admin.index')}}">Lihat Data</a>
+            <br><br><br>
 
 
-        @if($errors->any())
+    @if($errors->any())
         @foreach($errors->all() as $error)
         <p>{{ $error }}</p>
         @endforeach
-        @endif
-        @if (session('success'))
-        <p>{{session('success')}}</p>
-        @endif
-</body>
+    @endif
 
+    @if (session('success'))
+        <p>{{session('success')}}</p>
+    @endif
+</body>
 </html>

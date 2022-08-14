@@ -1,6 +1,7 @@
 <?php
 
-
+use App\Http\Controllers\MemberProgramController;
+use App\Http\Controllers\pointsController;
 use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\AdminController;
@@ -18,20 +19,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// ROOT (GUEST)
 Route::get('/', function () {
     return view('welcome');
 });
 
+Route::group([
+    'prefix' => config('admin.prefix'),
+    'namespace' => 'App\\Http\\Controllers',
+], function () {
 
-// Kegiatan
-Route::get('/daftarKegiatan', '\App\Http\Controllers\KegiatanController@index')->name('daftarKegiatan');
-Route::get('/tambahKegiatan', '\App\Http\Controllers\KegiatanController@create')->name('tambahKegiatan');
-Route::post('/simpanKegiatan', '\App\Http\Controllers\KegiatanController@store')->name('simpanKegiatan');
-Route::get('/editKegiatan/{id}', '\App\Http\Controllers\KegiatanController@edit')->name('editKegiatan');
-Route::post('/updateKegiatan/{id}', '\App\Http\Controllers\KegiatanController@update')->name('updateKegiatan');
-Route::get('/deleteKegiatan/{id}', '\App\Http\Controllers\KegiatanController@destroy')->name('deleteKegiatan');
+    //    LOGIN ADMIN
+    Route::get('login', 'LoginAdminController@formLogin')->name('admin.login');
+    Route::post('login', 'LoginAdminController@login');
 
 Route::resource('admin', AdminController::class);
 
 // Pengumuman
 Route::resource('pengumuman', PengumumanController::class);
+
+
+

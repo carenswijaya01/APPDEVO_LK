@@ -35,13 +35,13 @@
                             <div class="form-group col-6">
                                <label for="">Jenis Kegiatan</label>
                                 <select class="form-select form-control-sm" aria-label="" name="jenis_kegiatan" value="{{$keg->jenis_kegiatan}}">
-                                    
+
                                     <option>Terstruktur</option>
                                     <option>Non-Terstruktur</option>
                                 </select>
                             </div>
                         </div>
-                 
+
                         <div class="row justify-content-center mt-2">
                             <div class="form-floating col-6">
                                 <input type="text" class="form-control form-control-sm col-6" id="floatingNama" placeholder="Masukkan Nama Ketua Panitia" name="nama_ketua_panitia" value="{{$keg->nama_ketua_panitia}}" required>
@@ -62,7 +62,7 @@
                         </div>
                     </div>
                     <div class="row justify-content-center">
-                        <a href="{{url('/daftarKegiatan')}}" class="btn btn-danger mt-4 col-2 mx-2">Cancel</a>
+                        <a href="{{url('/admin/daftarKegiatan')}}" class="btn btn-danger mt-4 col-2 mx-2">Cancel</a>
                         <button class="btn btn-md btn-dark mt-4 col-3 " type="submit">Update</button>
                     </div>
                 </div>
