@@ -33,10 +33,43 @@ Route::group([
     Route::get('login', 'LoginAdminController@formLogin')->name('admin.login');
     Route::post('login', 'LoginAdminController@login');
 
-Route::resource('admin', AdminController::class);
+    // ADMIN & SUPER ADMIN
+    Route::middleware(['auth:admin'])->group(function () {
+        Route::post('logout', 'LoginAdminController@logout')->name('admin.logout');
+        Route::get('/', fn () => view('dashboard'))->name('dashboard');
+    });
 
-// Pengumuman
-Route::resource('pengumuman', PengumumanController::class);
+    //    SUPER ADMIN
+    Route::middleware(['auth:admin', 'can:role,"superadmin"'])->group(function () {
+        // CRUD ADMIN
+        Route::resource('/admin', AdminController::class);
+        Route::get('/type-point', fn () => view('crud-point-limit'));
+    });
 
+    //    ADMIN
+    Route::middleware(['auth:admin', 'can:role,"admin"'])->group(function () {
+        //        DAFTAR-KEGIATAN
+        Route::get('/validate-memberprogram', [MemberProgramController::class, 'show']);
+        Route::post('/validate-memberprogram', [MemberProgramController::class, 'update']);
+        //        INPUT POINT
+        route::resource('/points', pointsController::class);
+        // Kegiatan
+        Route::get('/daftarKegiatan', 'KegiatanController@index')->name('daftarKegiatan');
+        Route::get('/tambahKegiatan', 'KegiatanController@create')->name('tambahKegiatan');
+        Route::post('/simpanKegiatan', 'KegiatanController@store')->name('simpanKegiatan');
+        Route::get('/editKegiatan/{id}', 'KegiatanController@edit')->name('editKegiatan');
+        Route::post('/updateKegiatan/{id}', 'KegiatanController@update')->name('updateKegiatan');
+        Route::get('/deleteKegiatan/{id}', 'KegiatanController@destroy')->name('deleteKegiatan');
+        // Pengumuman
+        Route::resource('pengumuman', PengumumanController::class);
+    });
+});
 
-
+// MAHASISWA
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/home', fn () => view('home'));
+    Route::get('/user/update-password', fn () => view('auth.mahasiswa.update-password'))->name('update-password-user');
+    // DAFTAR-KEGIATAN
+    Route::get('/registration-program', [MemberProgramController::class, 'index']);
+    Route::post('/registration-program', [MemberProgramController::class, 'store']);
+});
