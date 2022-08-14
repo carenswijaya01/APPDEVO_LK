@@ -15,7 +15,7 @@ class PengumumanController extends Controller
     public function index()
     {
         $pengumuman = Pengumuman::paginate(10);
-        return view('viewPengumuman', compact('pengumuman'));
+        return view('pengumuman/daftarPengumuman', compact('pengumuman'));
     }
 
     /**
@@ -25,7 +25,7 @@ class PengumumanController extends Controller
      */
     public function create()
     {
-        return view('pengumuman');
+        return view('pengumuman/tambahPengumuman');
     }
 
     /**
@@ -45,7 +45,7 @@ class PengumumanController extends Controller
 
         Pengumuman::create($data);
 
-        return redirect()->back()->with(['success' => 'Data Berhasil Disimpan!']);
+        return redirect('admin/daftarPengumuman')->with('success', 'Barhasil!');
     }
 
     /**
@@ -56,7 +56,8 @@ class PengumumanController extends Controller
      */
     public function show(Pengumuman $pengumuman)
     {
-        //
+        // dd($pengumuman);
+        return view('pengumuman/detailPengumuman', compact('pengumuman'));
     }
 
     /**
@@ -67,19 +68,27 @@ class PengumumanController extends Controller
      */
     public function edit(Pengumuman $pengumuman)
     {
-        //
+        return view('pengumuman/editPengumuman', compact('pengumuman'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatePengumumanRequest  $request
      * @param  \App\Models\Pengumuman  $pengumuman
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Pengumuman $pengumuman)
     {
-        //
+        $data = $this->validate($request, [
+            'gambar'        => 'required',
+            'judul'         => 'required',
+            'penyelenggara' => 'required',
+            'deskripsi'     => 'required'
+        ]);
+
+        $pengumuman->update($data);
+
+        return redirect('admin/daftarPengumuman')->with('success', 'Barhasil!');
     }
 
     /**
@@ -90,6 +99,7 @@ class PengumumanController extends Controller
      */
     public function destroy(Pengumuman $pengumuman)
     {
-        //
+        $pengumuman->delete();
+        return redirect()->back()->with(['success', 'Data berhasil dihapus!']);
     }
 }

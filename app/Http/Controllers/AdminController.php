@@ -85,7 +85,7 @@ class AdminController extends Controller
      */
     public function update(Request $request, Admin $admin)
     {
-        $data = $this->validate($request,[
+        $data = $this->validate($request, [
             'nim' => 'required',
             'name' => 'required',
             'email' => 'required',
@@ -95,7 +95,7 @@ class AdminController extends Controller
         $data['password'] = is_null($data['password']) ? $admin->password : Hash::make($request->password);
 
         $admin->update($data);
-        return redirect()->back()->with('success','Data berhasil diubah');
+        return redirect()->back()->with('success', 'Data berhasil diubah');
     }
 
     /**

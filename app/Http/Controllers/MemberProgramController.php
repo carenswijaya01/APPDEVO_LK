@@ -6,14 +6,17 @@ use App\Models\MemberProgram;
 use App\Models\Program;
 use Illuminate\Http\Request;
 
-class MemberProgramController extends Controller {
-    public function index() {
+class MemberProgramController extends Controller
+{
+    public function index()
+    {
         return view('registration-program', [
             'programs' => Program::all()
         ]);
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $validated = $request->validate([
             'program_id' => 'required',
             'file' => 'required|mimes:pdf|file|max:5120|unique:member_programs,file',
@@ -38,13 +41,15 @@ class MemberProgramController extends Controller {
         }
     }
 
-    public function show() {
+    public function show()
+    {
         return view('validate-memberprogram', [
             'members' => MemberProgram::all()
         ]);
     }
 
-    public function update(Request $request) {
+    public function update(Request $request)
+    {
         $validated = $request->validate([
             'member_program' => 'required',
             'status' => 'required'

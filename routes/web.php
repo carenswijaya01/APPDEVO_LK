@@ -60,8 +60,10 @@ Route::group([
         Route::get('/editKegiatan/{id}', 'KegiatanController@edit')->name('editKegiatan');
         Route::post('/updateKegiatan/{id}', 'KegiatanController@update')->name('updateKegiatan');
         Route::get('/deleteKegiatan/{id}', 'KegiatanController@destroy')->name('deleteKegiatan');
+
         // Pengumuman
         Route::resource('pengumuman', PengumumanController::class);
+        Route::get('/daftarPengumuman', [PengumumanController::class, 'index']);
     });
 });
 
