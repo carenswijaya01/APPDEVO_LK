@@ -35,16 +35,15 @@ class PengumumanController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $data = $this->validate($request, [
             'gambar'        => 'required',
             'judul'         => 'required',
             'penyelenggara' => 'required',
-            'deskripsi'     => 'required',
-            'diterbitkan'   => 'required',
+            'deskripsi'     => 'required'
         ]);
 
-        dd($data);
-        Pengumuman::create($request->all());
+        Pengumuman::create($data);
 
         return redirect()->back()->with(['success' => 'Data Berhasil Disimpan!']);
     }

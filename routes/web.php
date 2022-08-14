@@ -35,6 +35,3 @@ Route::resource('admin', AdminController::class);
 
 // Pengumuman
 Route::resource('pengumuman', PengumumanController::class);
-
-
-

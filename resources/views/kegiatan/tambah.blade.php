@@ -33,7 +33,7 @@
                         </div>
                         <div class="row justify-content-center mt-2">
                             <div class="form-group col-6">
-                               
+
                                 <select class="form-select form-control-sm" aria-label="" name="jenis_kegiatan">
                                     <option>Jenis Kegiatan</option>
                                     <option>Terstruktur</option>
@@ -41,7 +41,7 @@
                                 </select>
                             </div>
                         </div>
-                 
+
                         <div class="row justify-content-center mt-2">
                             <div class="form-floating col-6">
                                 <input type="text" class="form-control form-control-sm col-6" id="floatingNama" placeholder="Masukkan Nama Ketua Panitia" name="nama_ketua_panitia" required>

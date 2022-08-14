@@ -53,8 +53,15 @@
     <div class="modal fade" id="tambah_pengumuman" role="dialog" arialabelledby="modalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content" style="border-radius:20px 20px 20px 20px">
-                <form action="{{ route('pengumuman.store') }}" method="POST" class="p-4">
+                <form action="{{ route('pengumuman.store') }}" enctype="multipart/form-data" method="POST" class="p-4">
                     @csrf
+
+                    @if($errors->any())
+                    @foreach($errors->all() as $error)
+                    <p>{{ $error }}</p>
+                    @endforeach
+                    @endif
+
                     <h3 class="text-center" style="color: #2D3F9F;">Tambah Pengumuman</h3>
                     <hr class="mt-4" style="color: #F0803C; height: 2px;">
                     <div class="row">
@@ -73,7 +80,7 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="gambar" class="form-label mt-2">Poster Kegiatan</label>
-                                <input type="file" class="form-control" id="gambar" required>
+                                <input type="file" class="form-control" id="gambar" name="gambar" required>
                             </div>
                         </div>
                     </div>
@@ -103,7 +110,7 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#summernote').summernote({
+            $(' #summernote').summernote({
                 height: 300,
             });
         });
