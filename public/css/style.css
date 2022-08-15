@@ -179,3 +179,12 @@ body {
 .feather:hover {
   color: #2470dc;
 }
+
+.tab {
+    border: none;
+}
+
+.modal-header {
+    background: rgb(136, 133, 133);
+    color: #eee;
+}
