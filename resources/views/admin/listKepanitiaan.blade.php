@@ -140,7 +140,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Input Poin</h5>
+                        <h5 class="modal-title">Program Kepanitiaan</h5>
                         <button type="button" class="btn-close btn btn-light" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
