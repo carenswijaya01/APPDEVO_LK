@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -85,6 +86,9 @@
                     <h2 text align="center">Pengumuman</h2>
                     <table class="table table-striped text-center table-bordered border-dark table table-hover">
                         <thead class="table-primary table-bordered border-dark">
+                            <tr class="tab">
+                                <th class=""><button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#myModal" id="tambahData"><i class="far fa-plus"></i></button></th>
+                            </tr>
                             <tr>
                                 <th>No.</th>
                                 <th>Judul</th>
@@ -97,37 +101,74 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <th>1</th>
-                                <th>Pengumuman 1</th>
-                                <th>Mary</th>
-                                <th>10/08/2022</th>
-                                <th><a href="https://drive.google.com/file/d/1r7G1SRgnNs1CiVVdKilz0Y0Eeq5IbSc6/view" target="_blank"><span data-feather="eye"></span></th></a>
-                                <th><span data-feather="edit"></span></th>
-                                <th> <button type="button" class="btn btn-sm btn-outline-dark">&nbsp;Edit</button>
+                                <td>1</td>
+                                <td>Pengumuman 1</td>
+                                <td>Mary</td>
+                                <td>10/08/2022</td>
+                                <td><a href="https://drive.google.com/file/d/1r7G1SRgnNs1CiVVdKilz0Y0Eeq5IbSc6/view" target="_blank"><span data-feather="eye"></span></td></a>
+                                <td><span data-feather="edit"></span></td>
+                                <td> <button type="button" class="btn btn-sm btn-outline-dark">&nbsp;Edit</button>
                                     <button onclick="myFunction()" type="button" class="btn btn-sm btn-outline-dark">&nbsp;Hapus</button>
-                                </th>
+                                </td>
                             </tr>
                             <tr>
-                                <th>2</th>
-                                <th>Pengumuman 2</th>
-                                <th>John</th>
-                                <th>11/08/2022</th>
-                                <th><a href="https://drive.google.com/file/d/1r7G1SRgnNs1CiVVdKilz0Y0Eeq5IbSc6/view" target="_blank"><span data-feather="eye"></span></th></a>
-                                <th><span data-feather="edit"></span></th>
-                                <th> <button type="button" class="btn btn-sm btn-outline-dark">&nbsp;Edit</button>
+                                <td>2</td>
+                                <td>Pengumuman 2</td>
+                                <td>John</td>
+                                <td>11/08/2022</td>
+                                <td><a href="https://drive.google.com/file/d/1r7G1SRgnNs1CiVVdKilz0Y0Eeq5IbSc6/view" target="_blank"><span data-feather="eye"></span></td></a>
+                                <td><span data-feather="edit"></span></td>
+                                <td> <button type="button" class="btn btn-sm btn-outline-dark">&nbsp;Edit</button>
                                     <button onclick="myFunction()" type="button" class="btn btn-sm btn-outline-dark">&nbsp;Hapus</button>
-                                </th>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
-                    <div class="button">
-                        <br><a href="admin-pengumuman"><input type="submit" value="Tambah"></a>
+                </div>
+            </div>
+        <div class="container mt-5">
+        <div class="modal" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Input Poin</h5>
+                        <button type="button" class="btn-close btn btn-light" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="">
+                            <div class="mb-3">
+                                <label for="title" class="form-label">Judul</label>
+                                <input type="text" class="form-control" id="fname" name="firstname" placeholder="Masukan Judul" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="author" class="form-label">Penulis</label>
+                                <input type="text" name="author" class="form-control" placeholder="Nama Penulis" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="aras" class="form-label ">Tanggal</label>
+                                <input type="date" class="form-control" placeholder="tanggal upload">
+                            </div>
+                            <div class="mb-3">
+                                <label for="image">Gambar</label>&nbsp;
+                                <input type="file" accept="image/png, image/jpg" name="upload_file" class="form-control" id="upload_file" onchange="getImagePreview(event)">
+                            </div><center><div id="preview"></div></center>
+                            <div class="mb-3">
+                                <label for="keterangan" class="form-label">Isi</label>
+                                <input id="Isi" placeholder="Masukan Isi" type="hidden" name="content">
+                                <trix-editor input="Isi"></trix-editor>
+                            </div>
+                        </form>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-dark">Simpan</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
+                        </div>
                     </div>
                 </div>
             </div>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-            <script src="js/script.js"></script>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/script.js"></script>
 </body>
-
 </html>
