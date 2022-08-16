@@ -13,8 +13,7 @@
 
     <table border="1">
     <tr>
-        <th>POINT ID</th>
-        <th>ADMIN ID</th>
+        <th>Admin yang menambah</th>
         <th>USER ID</th>
         <th>FILE</th>
         <th>TYPE POINT ID</th>
@@ -22,15 +21,15 @@
     </tr>
     @foreach($points as $p)
     <tr>
-        <td>{{$p->point_id}}</td>
-        <td>{{$p->admin_id}}</td>
-        <td>{{$p->user_id}}</td>
+        <td>{{$p->admin->name}}</td>
+        <td>{{$p->user->name}}</td>
+        {{--  TODO: tampilkan pdf --}}
         <td>{{$p->file}}</td>
         <td>{{$p->type_point_id}}</td>
         <td>{{$p->point}}</td>
         <td>
-        <a href="{{ route('points.edit',$p->point_id) }}">EDIT</a>
-        <a href="points/hapus/{{$p->point_id}}">HAPUS</a>
+        <a href="{{ route('points.edit',$p->id) }}">EDIT</a>
+        {{-- <a href="points/hapus/{{$p->point_id}}">HAPUS</a> --}}
         </td>
     </tr>
     @endforeach

@@ -45,15 +45,15 @@ Route::group([
         Route::resource('/admin', AdminController::class);
         // TYPE POINT
         Route::get('/type-point', [TypePointController::class, 'index'])->name('type-point.index');
-        Route::put('/type-point',[TypePointController::class,'update'])->name('type-point.update');
+        Route::put('/type-point', [TypePointController::class, 'update'])->name('type-point.update');
     });
 
     //    ADMIN
     Route::middleware(['auth:admin', 'can:role,"admin"'])->group(function () {
-        //        DAFTAR-KEGIATAN
+        // DAFTAR-KEGIATAN
         Route::get('/validate-memberprogram', [MemberProgramController::class, 'show']);
         Route::post('/validate-memberprogram', [MemberProgramController::class, 'update']);
-        //        INPUT POINT
+        // INPUT POINT
         route::resource('/points', pointsController::class);
         // Kegiatan
         Route::get('/daftarKegiatan', 'KegiatanController@index')->name('daftarKegiatan');
@@ -75,4 +75,3 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/registration-program', [MemberProgramController::class, 'index']);
     Route::post('/registration-program', [MemberProgramController::class, 'store']);
 });
-
