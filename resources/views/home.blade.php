@@ -1,3 +1,4 @@
+{{-- HOME MAHASISWA --}}
 @extends('template.app')
 <h1>{{ auth()->user()->name }}</h1>
 {{--logout--}}
@@ -6,4 +7,5 @@
     <button type="submit">logout</button>
 </form>
 <a href="{{ route('update-password-user') }}">Change Password</a>
-<a href="{{ url('/registration-program') }}">Daftar</a>
+<br>
+<a href="{{ url('/registration-program') }}">Daftar kegiatan</a>

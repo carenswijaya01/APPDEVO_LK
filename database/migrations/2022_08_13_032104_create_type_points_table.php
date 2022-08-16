@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('type_points', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->integer('max_point');
+            $table->integer('limit');
             $table->timestamps();
         });
     }

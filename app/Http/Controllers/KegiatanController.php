@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Program;
 use App\Models\Kegiatan;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,7 @@ class KegiatanController extends Controller
      */
     public function index()
     {
-        $dataKegiatan = Kegiatan::all();
+        $dataKegiatan = Program::all();
         return view('kegiatan.daftar', compact('dataKegiatan'));
     }
 

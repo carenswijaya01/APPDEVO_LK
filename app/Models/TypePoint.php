@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class TypePoint extends Model
 {
     use HasFactory;
-    protected $fillable = ['max_point'];
+    protected $guarded = [];
 }

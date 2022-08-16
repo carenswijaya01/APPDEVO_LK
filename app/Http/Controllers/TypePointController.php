@@ -17,7 +17,7 @@ class TypePointController extends Controller
     public function update(Request $request): RedirectResponse
     {
         $typePoint = TypePoint::whereName($request->name)->firstOrFail();
-        $validated = $this->validate($request,[ 'max_point'=> 'required|numeric' ]);
+        $validated = $this->validate($request,[ 'limit'=> 'required|numeric' ]);
         $typePoint->update($validated);
 
         return back()->withSuccess("Berhasil merubah point ".$typePoint->name." menjadi ". $request->max_point);

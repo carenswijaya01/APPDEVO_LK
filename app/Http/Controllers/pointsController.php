@@ -30,7 +30,7 @@ class pointsController extends Controller
 
         $validated = $request->validate([
             'user_id' => 'required|exists:users,id',
-            'point' => 'required|numeric|max:' . $typePoint->max_point,
+            'point' => 'required|numeric',
             'file' => 'required|file|mimes:pdf|max:30000', // 30mb
             'type_point_id' => 'required|numeric|exists:type_points,id',
         ]);
@@ -56,7 +56,7 @@ class pointsController extends Controller
         $typePoint = TypePoint::findOrFail($request->type_point_id);
         $rules = [
             'user_id' => 'required|exists:users,id',
-            'point' => 'required|numeric|max:' . $typePoint->max_point,
+            'point' => 'required|numeric',
             'type_point_id' => 'required|numeric|exists:type_points,id',
         ];
         if (!is_null($request->file))

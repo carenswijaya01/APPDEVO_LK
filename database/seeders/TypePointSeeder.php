@@ -25,7 +25,7 @@ class TypePointSeeder extends Seeder
         foreach ($typePoints as $key => $value) {
             TypePoint::insert([
                 'name' => $key,
-                'max_point' => $value,
+                'limit' => $value,
                 'created_at' => now(),
                 'updated_at' => now()
             ]);

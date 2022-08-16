@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->integer('admin_id')->nullable();
             $table->string('title');
             $table->text('content')->nullable();
+            $table->timestamps();
         });
     }
 

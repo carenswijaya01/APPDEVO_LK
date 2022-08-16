@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_kegiatan', 100);
             $table->string('jenis_kegiatan', 100);
-            $table->string('deskripsi_kegiatan', 100);
+            $table->text('deskripsi_kegiatan');
             $table->string('nama_ketua_panitia', 100);
             $table->date('tgl_kegiatan', 100);
             $table->timestamps();

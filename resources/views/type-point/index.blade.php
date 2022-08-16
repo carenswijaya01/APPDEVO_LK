@@ -14,7 +14,7 @@
                 <form action="{{ route('type-point.update')}}" method="post">
                     @csrf
                     @method('put')
-            <td><input type="number" class="form-control" id="limit" name="max_point" placeholder="0"></td>
+            <td><input type="number" class="form-control" id="limit" name="limit" placeholder="0"></td>
             <td>
                     <select class="form-select" id="tipepoin" name="name">
                         @foreach ($typePoints as $point)
@@ -32,7 +32,7 @@
 <table class="table ">
     <thead class="table-dark">
         <tr>
-            <th>Maksimal Point</th>
+            <th>Limit</th>
             <th>Tipe Poin</th>
             {{-- <th>Aksi</th> --}}
         </tr>
@@ -40,7 +40,7 @@
     <tbody>
         @foreach ($typePoints as $point)
         <tr>
-            <td>{{ $point->max_point}}</td>
+            <td>{{ $point->limit}}</td>
             <td>{{ $point->name}}</td>
             {{-- <td>
                 <div class="btn-group me-2">

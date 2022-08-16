@@ -15,11 +15,12 @@ return new class extends Migration
     {
         Schema::create('pengumumen', function (Blueprint $table) {
             $table->id();
+            // $table->foreignId('id_admin')->constrained('admins');
             $table->string('gambar');
             $table->string('judul');
             $table->string('penyelenggara');
             $table->text('deskripsi');
-            $table->timestamp('diterbitkan')->nullable();
+            // $table->timestamp('diterbitkan')->nullable();
             $table->timestamps();
         });
     }

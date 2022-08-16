@@ -29,7 +29,11 @@
         <td>{{$p->point}}</td>
         <td>
         <a href="{{ route('points.edit',$p->id) }}">EDIT</a>
-        {{-- <a href="points/hapus/{{$p->point_id}}">HAPUS</a> --}}
+        <form action="{{route('points.destroy',$p->id)}}" method="post">
+        @csrf
+        @method('delete')
+        <input type="submit" value="Delete" onclick="return confirm('yakin ingin menghapus point ini?')">
+        </form>
         </td>
     </tr>
     @endforeach

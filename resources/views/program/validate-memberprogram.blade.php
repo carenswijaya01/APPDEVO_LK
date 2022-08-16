@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -36,8 +36,8 @@
                     <input type="submit" name="status" value="diterima">
                 </td>
             </tr>
-        </form>        
+        </form>
         @endforeach
-    </table> 
+    </table>
 </body>
 </html>

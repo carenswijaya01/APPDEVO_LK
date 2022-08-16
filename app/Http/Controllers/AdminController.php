@@ -16,7 +16,7 @@ class AdminController extends Controller
     public function index()
     {
         $admin = Admin::paginate(10);
-        return view('dataadmin', compact('admin'));
+        return view('admin.dataadmin', compact('admin'));
     }
 
     /**
@@ -26,7 +26,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('admin');
+        return view('admin.admin');
     }
 
     /**
@@ -74,7 +74,7 @@ class AdminController extends Controller
      */
     public function edit(Admin $admin)
     {
-        return view('edit', compact('admin'));
+        return view('admin.edit', compact('admin'));
     }
 
     /**
@@ -86,7 +86,7 @@ class AdminController extends Controller
      */
     public function update(Request $request, Admin $admin)
     {
-        $data = $this->validate($request,[
+        $data = $this->validate($request, [
             'nim' => 'required',
             'name' => 'required',
             'email' => 'required',
@@ -96,7 +96,7 @@ class AdminController extends Controller
         $data['password'] = is_null($data['password']) ? $admin->password : Hash::make($request->password);
 
         $admin->update($data);
-        return redirect()->back()->with('success','Data berhasil diubah');
+        return redirect()->back()->with('success', 'Data berhasil diubah');
     }
 
     /**
@@ -107,7 +107,7 @@ class AdminController extends Controller
      */
     public function destroy(Admin $admin)
     {
-        if($admin->role == 'superadmin') return back()->withError("Data tidak bisa dihapus!");
+        if ($admin->role == 'superadmin') return back()->withError("Data tidak bisa dihapus!");
         $admin->delete();
         return redirect()->back()->with(['success', 'Data berhasil dihapus!']);
     }
