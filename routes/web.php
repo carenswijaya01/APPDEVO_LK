@@ -73,3 +73,8 @@ Route::get('/admin-validasi', function () {
     return view('admin/Validasi');
 });
 
+Route::get('/form-pendaftaran', function () {
+    return view('form-pendaftaran');
+});
+
+
