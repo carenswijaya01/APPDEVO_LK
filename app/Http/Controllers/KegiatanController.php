@@ -16,7 +16,8 @@ class KegiatanController extends Controller
      */
     public function index()
     {
-        $dataKegiatan = Program::all();
+        $dataKegiatan = Kegiatan::all();
+        // dd($dataKegiatan);
         return view('kegiatan.daftar', compact('dataKegiatan'));
     }
 
@@ -45,7 +46,8 @@ class KegiatanController extends Controller
             'nama_ketua_panitia' => $request->nama_ketua_panitia,
             'tgl_kegiatan' => $request->tgl_kegiatan,
         ]);
-       return redirect('/admin/daftarKegiatan');
+
+        return redirect('/admin/daftarKegiatan');
     }
 
     /**

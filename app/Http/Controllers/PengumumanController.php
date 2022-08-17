@@ -35,17 +35,24 @@ class PengumumanController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
+        // $validatedData = $request->validate([
+        //     'image' => 'image|file|max:5120'
+        // ]);
+        // ddd($request);
+
+
         $data = $this->validate($request, [
-            'gambar'        => 'required',
+            'gambar'        => 'required|image|file|max:5120',
             'judul'         => 'required',
             'penyelenggara' => 'required',
             'deskripsi'     => 'required'
         ]);
 
+        $data['gambar'] = $request->file('gambar')->store('post-gambar');
+
         Pengumuman::create($data);
 
-        return redirect('admin/daftarPengumuman')->with('success', 'Barhasil!');
+        return redirect('admin/pengumuman')->with('success', 'Barhasil!');
     }
 
     /**

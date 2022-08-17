@@ -29,12 +29,6 @@
                 <form action="{{ route('pengumuman.store') }}" enctype="multipart/form-data" method="POST" class="p-4">
                     @csrf
 
-                    @if($errors->any())
-                    @foreach($errors->all() as $error)
-                    <p>{{ $error }}</p>
-                    @endforeach
-                    @endif
-
                     <h2 class="text-center" style="color: #2D3F9F;">Tambah Pengumuman</h2>
                     <hr class="mt-4" style="color: #F0803C; height: 4px;">
                     <div class="row">
@@ -53,21 +47,31 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="gambar" class="form-label mt-2"><b>Poster Kegiatan</b></label>
-                                <input type="file" class="form-control" id="gambar" name="gambar" required>
+                                <input type="file" class="form-control @error('gambar') is-invalid @enderror" id="gambar" name="gambar" required>
+                                @error('gambar')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
                         </div>
                     </div>
 
                     <h5 class="mt-4" style="color: #2D3F9F;">Deskripsi Kegiatan</h5>
                     <div class="form-group">
-                        <input id="deskripsi" type="hidden" name="deskripsi">
-                        <trix-editor input="deskripsi"></trix-editor>
+                        <input id="deskripsi" type="hidden" name="deskripsi" required>
+                        <trix-editor input="deskripsi" class="@error('deskripsi') is-invalid @enderror"></trix-editor>
+                        @error('deskripsi')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
                     </div>
 
                     <div class="row mt-4">
                         <div class="col-12">
                             <button type="submit" name="submit" id="simpan" class="btn btn-primary mr-1 mx-2" style="float: right">Simpan</button>
-                            <a href="{{url('/admin/daftarPengumuman')}}" class="btn btn-danger mr-2" style="float: right">Batal</a>
+                            <a href="{{ route('pengumuman.index')}}" class="btn btn-danger mr-2" style="float: right">Batal</a>
                         </div>
                     </div>
                 </form>

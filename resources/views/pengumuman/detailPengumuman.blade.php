@@ -23,7 +23,7 @@
                 <h1 class="text-center text-uppercase">{{$pengumuman->judul}}</h1>
 
                 <div class="mt-4 row align-items-start d-inline-block">
-                    <img src="https://scontent.fcgk6-2.fna.fbcdn.net/v/t39.30808-6/241083650_4459425754079669_5859393618455343271_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=a26aad&_nc_eui2=AeGOyd5VNWeIRPJpF_yskBb9MiqLLyRA5rgyKosvJEDmuMr74cnxK5m_5sGlr_pSoS6HPIj7WAl58d2686hzfiEs&_nc_ohc=0V0E-nkod-IAX_z8pds&_nc_ht=scontent.fcgk6-2.fna&oh=00_AT_H5aZlVPowty_p-6ibML1QBrfvepV3HaqIDihakouK6A&oe=62FDABEC" style="width: 500px;" class="img-thumbnail" alt="...">
+                    <img src="{{ asset('storage/' . $pengumuman->gambar) }}" style="width: 500px;" class="img-thumbnail" alt="...">
                     <div class="">
                         <h2>{{$pengumuman->judul}}</h2>
                         <h5>Tanggal Post : {{$pengumuman->created_at->toDateString()}}</h5>

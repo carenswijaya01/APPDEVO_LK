@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('judul');
             $table->string('penyelenggara');
             $table->text('deskripsi');
-            // $table->timestamp('diterbitkan')->nullable();
             $table->timestamps();
         });
     }
