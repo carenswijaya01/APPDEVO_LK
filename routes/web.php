@@ -77,4 +77,6 @@ Route::get('/form-pendaftaran', function () {
     return view('form-pendaftaran');
 });
 
-
+Route::get('/home', function () {
+    return view('homepage');
+});
