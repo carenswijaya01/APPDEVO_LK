@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pengumuman;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PengumumanController extends Controller
 {
@@ -35,12 +36,6 @@ class PengumumanController extends Controller
      */
     public function store(Request $request)
     {
-        // $validatedData = $request->validate([
-        //     'image' => 'image|file|max:5120'
-        // ]);
-        // ddd($request);
-
-
         $data = $this->validate($request, [
             'gambar'        => 'required|image|file|max:5120',
             'judul'         => 'required',
@@ -87,15 +82,22 @@ class PengumumanController extends Controller
     public function update(Request $request, Pengumuman $pengumuman)
     {
         $data = $this->validate($request, [
-            'gambar'        => 'required',
+            'gambar'        => 'required|image|file|max:5120',
             'judul'         => 'required',
             'penyelenggara' => 'required',
             'deskripsi'     => 'required'
         ]);
 
+        if ($request->file('gambar')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $data['gambar'] = $request->file('gambar')->store('post-gambar');
+        }
+
         $pengumuman->update($data);
 
-        return redirect('admin/daftarPengumuman')->with('success', 'Barhasil!');
+        return redirect('admin/pengumuman')->with('success', 'Barhasil!');
     }
 
     /**
@@ -106,6 +108,9 @@ class PengumumanController extends Controller
      */
     public function destroy(Pengumuman $pengumuman)
     {
+        if ($pengumuman->gambar) {
+            Storage::delete($pengumuman->gambar);
+        }
         $pengumuman->delete();
         return redirect()->back()->with(['success', 'Data berhasil dihapus!']);
     }

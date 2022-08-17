@@ -35,19 +35,20 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="judul" class="form-label text-bold"><b>Judul Kegiatan</b></label>
-                                <input type="text" class="form-control form-control-md" id="judul" placeholder="" name="judul" value="" required>
+                                <input type="text" class="form-control form-control-md" id="judul" placeholder="" name="judul" value="{{ old('judul') }}" required>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="penyelenggara" class="form-label mt-2 text-bold"><b>Penyelenggara</b></label>
-                                <input type="text" class="form-control form-control-md" id="penyelenggara" placeholder="" name="penyelenggara" value="" required>
+                                <input type="text" class="form-control form-control-md" id="penyelenggara" placeholder="" name="penyelenggara" value="{{ old('penyelenggara') }}" required>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="gambar" class="form-label mt-2"><b>Poster Kegiatan</b></label>
-                                <input type="file" class="form-control @error('gambar') is-invalid @enderror" id="gambar" name="gambar" required>
+                                <input type="file" class="form-control @error('gambar') is-invalid @enderror" id="gambar" name="gambar" onchange="previewImage()" required>
+                                <img class="img-preview img-fluid mt-3 col-sm-4">
                                 @error('gambar')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -59,7 +60,7 @@
 
                     <h5 class="mt-4" style="color: #2D3F9F;">Deskripsi Kegiatan</h5>
                     <div class="form-group">
-                        <input id="deskripsi" type="hidden" name="deskripsi" required>
+                        <input id="deskripsi" type="hidden" name="deskripsi" value="{{ old('deskripsi') }}" required>
                         <trix-editor input="deskripsi" class="@error('deskripsi') is-invalid @enderror"></trix-editor>
                         @error('deskripsi')
                         <div class="invalid-feedback">
@@ -84,6 +85,20 @@
     document.addEventListener('trix-file-accept', function(e) {
         e.preventDefault();
     })
+
+    function previewImage() {
+        const image = document.querySelector('#gambar');
+        const imgPreview = document.querySelector('.img-preview');
+
+        imgPreview.style.display = 'block';
+
+        const oFReader = new FileReader();
+        oFReader.readAsDataURL(image.files[0]);
+
+        oFReader.onload = function(oFREvent) {
+            imgPreview.src = oFREvent.target.result;
+        }
+    }
 </script>
 
 </html>
