@@ -45,32 +45,32 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php
-                                    $no = 1;
-                                ?>
-                                  @foreach ($dataKegiatan as $item)
-                                  <tr>
-                                      <td>{{ $no }}</td>
-                                      <td>{{$item ->nama_kegiatan}}</td>
-                                      <td>{{$item ->jenis_kegiatan}}</td>
-                                      <td>{{$item ->nama_ketua_panitia}}</td>
-                                      <td>{{$item ->tgl_kegiatan}}</td>
-                                      <td>{{$item ->deskripsi_kegiatan}}</td>
-                                      <td>
-                                          <div class="row">
-                                              <div class="col-3">
-                                                  <a href="{{ route('editKegiatan', $item->id)}}" class="btn btn-success">Edit</a>
-                                              </div>
-                                              <div class="col-3">
-                                                  <a href="{{ route('deleteKegiatan', $item->id)}}" onclick="return alert('Yakin untuk Menghapus ?')" class="btn btn-danger">Hapus</a>
-                                              </div>
-                                          </div>
-                                      </td>
-                                  </tr>
                                     <?php
-                                    $no ++;
+                                    $no = 1;
                                     ?>
-                                  @endforeach
+                                    @foreach ($dataKegiatan as $item)
+                                    <tr>
+                                        <td>{{ $no }}</td>
+                                        <td>{{$item ->nama_kegiatan}}</td>
+                                        <td>{{$item ->jenis_kegiatan}}</td>
+                                        <td>{{$item ->nama_ketua_panitia}}</td>
+                                        <td>{{$item ->tgl_kegiatan}}</td>
+                                        <td>{{$item ->deskripsi_kegiatan}}</td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-3">
+                                                    <a href="{{ route('editKegiatan', $item->id)}}" class="btn btn-success">Edit</a>
+                                                </div>
+                                                <div class="col-3">
+                                                    <a href="{{ route('deleteKegiatan', $item->id)}}" onclick="return alert('Yakin untuk Menghapus ?')" class="btn btn-danger">Hapus</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                    $no++;
+                                    ?>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
