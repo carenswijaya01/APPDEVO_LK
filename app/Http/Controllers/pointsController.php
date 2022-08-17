@@ -14,7 +14,7 @@ class pointsController extends Controller
 
     public function index()
     {
-        $points = Point::with(['user', 'admin', 'type_point'])->get();
+        $points = Point::with(['user', 'admin', 'type_point'])->paginate(10);
         return view('point.index', ['points' => $points]);
     }
     public function create()

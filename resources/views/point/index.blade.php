@@ -14,9 +14,9 @@
     <table border="1">
     <tr>
         <th>Admin yang menambah</th>
-        <th>USER ID</th>
+        <th>Mahasiswa</th>
         <th>FILE</th>
-        <th>TYPE POINT ID</th>
+        <th>Tipe Point</th>
         <th>POINT</th>
     </tr>
     @foreach($points as $p)
@@ -24,8 +24,8 @@
         <td>{{$p->admin->name}}</td>
         <td>{{$p->user->name}}</td>
         {{--  TODO: tampilkan pdf --}}
-        <td>{{$p->file}}</td>
-        <td>{{$p->type_point_id}}</td>
+        <td><a href="{{asset('storage/'.$p->file)}}">{{$p->user->name}}</a></td>
+        <td>{{$p->type_point->name}}</td>
         <td>{{$p->point}}</td>
         <td>
         <a href="{{ route('points.edit',$p->id) }}">EDIT</a>
@@ -38,5 +38,6 @@
     </tr>
     @endforeach
     </table>
+{{$points->links()}}
 </body>
 </html>
