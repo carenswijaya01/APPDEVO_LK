@@ -17,7 +17,7 @@ class UserFactory extends Factory
      */
     public function definition()
     {
-        $nim = '6720'. rand(11111,99999);
+        $nim = fake()->unique()->regexify('\d{9}');
         return [
             'name' => fake()->name(),
             'email' => $nim.'@student.uksw.edu',

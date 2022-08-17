@@ -17,10 +17,10 @@ class PengumumanFactory extends Factory
     public function definition()
     {
         return [
-            'gambar'=> fake()->unique()->sentence(2),
-            'judul'=> fake()->title(),
+            'gambar'=> fake()->image(storage_path('pengumuman')),
+            'judul'=> fake()->text(100),
             'penyelenggara'=> fake()->name(),
-            'deskripsi'=> fake()->paragraph(6),
+            'deskripsi'=> fake()->paragraphs(6),
         ];
     }
 }

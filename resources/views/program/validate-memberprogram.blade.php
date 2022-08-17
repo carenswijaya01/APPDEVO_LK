@@ -19,7 +19,7 @@
             <th>Update status</th>
         </tr>
         @foreach ($members as $member)
-        <form action="/validate-memberprogram" method="post">
+        <form action="/admin/validate-memberprogram" method="post">
             @csrf
             <tr>
                 <td>{{ $member->member_program }}</td>

@@ -56,7 +56,6 @@ class MemberProgramController extends Controller
         ]);
 
         MemberProgram::where('member_program', $request->member_program)->update($validated);
-
-        return redirect('/validate-memberprogram');
+        return redirect('/admin/validate-memberprogram');
     }
 }

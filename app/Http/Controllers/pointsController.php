@@ -10,7 +10,7 @@ use Storage;
 
 class pointsController extends Controller
 {
-    private string $path = '/point/';
+    private string $path = '/point';
 
     public function index()
     {
@@ -76,6 +76,7 @@ class pointsController extends Controller
     public function destroy(Point $point)
     {
         $point->delete();
+        Storage::delete($point->file);
         return redirect()->back()->with('success', "Berhasil menghapus Point");
     }
 }
