@@ -20,13 +20,18 @@ use Illuminate\Support\Facades\Route;
 
 // ROOT (GUEST)
 Route::get('/', function () {
-    return view('welcome');
+    return view('homepage');
+});
+
+Route::get('/pengumuman', function () {
+    return view('pengumuman');
 });
 
 Route::group([
     'prefix' => config('admin.prefix'),
     'namespace' => 'App\\Http\\Controllers',
 ], function () {
+
 
     //    LOGIN ADMIN
     Route::get('login', 'LoginAdminController@formLogin')->name('admin.login');
@@ -50,8 +55,8 @@ Route::group([
     //    ADMIN
     Route::middleware(['auth:admin', 'can:role,"admin"'])->group(function () {
         // DAFTAR-KEGIATAN
-//        Route::get('/validate-memberprogram', [MemberProgramController::class, 'show']);
-//        Route::post('/validate-memberprogram', [MemberProgramController::class, 'update']);
+        Route::get('/validate-memberprogram', [MemberProgramController::class, 'show']);
+        Route::post('/validate-memberprogram', [MemberProgramController::class, 'update']);
         // INPUT POINT
         route::resource('/points', pointsController::class);
         // Kegiatan
@@ -64,6 +69,7 @@ Route::group([
 
         // Pengumuman
         Route::resource('pengumuman', PengumumanController::class);
+        // Route::get('/daftarPengumuman', [PengumumanController::class, 'index']);  // (BISA PAKEK /PENGUMUMAN)
     });
 });
 
@@ -72,6 +78,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/home', fn () => view('home'));
     Route::get('/user/update-password', fn () => view('auth.mahasiswa.update-password'))->name('update-password-user');
     // DAFTAR-KEGIATAN
-//    Route::get('/registration-program', [MemberProgramController::class, 'index']);
-//    Route::post('/registration-program', [MemberProgramController::class, 'store']);
+    Route::get('/registration-program', [MemberProgramController::class, 'index']);
+    Route::post('/registration-program', [MemberProgramController::class, 'store']);
 });

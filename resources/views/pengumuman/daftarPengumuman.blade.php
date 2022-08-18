@@ -1,6 +1,7 @@
-<!doctype html>
-<html lang="en">
+@extends('template')
+@section('content')
 
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -54,5 +55,6 @@
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
+</main>
 
-</html>
+@endsection

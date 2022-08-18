@@ -1,5 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('template')
+@section('content')
+
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,13 +14,15 @@
     <br/>
     <br/>
 
-    <table border="1">
+    <table border="1" class="table">
+        <thead class="table-dark">
     <tr>
         <th>No</th>
         <th>Mahasiswa</th>
         <th>NIM</th>
         <th>Aksi</th>
     </tr>
+        </thead>
         @foreach($users as $user)
             <tr>
                 <td>{{$loop->iteration}}</td>
@@ -32,4 +36,5 @@
     </table>
 {{$users->links()}}
 </body>
-</html>
+</main>
+@endsection

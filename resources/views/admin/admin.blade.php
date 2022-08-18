@@ -2,7 +2,8 @@
 ?>
 
 
-
+@extends('template')
+@section('content')
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,41 +11,63 @@
     <title>CRUD Admin</title>
 </head>
 
-<body>
-    <h1> Create Admin Account</h1>
-    <ul>
-        <form action="{{ route('admin.store') }}" method="POST">
-            @csrf
-            <label for="nim">NIM</label>
-            <input type="text" name="nim" id="nim" placeholder="Enter your NIM" required>
-            <br>
-            <label for="name">Nama</label>
-            <input type="text" name="name" id="name" placeholder="Enter your name" required>
-            <br>
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email" placeholder="Enter your email address" required>
-            <br>
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" placeholder="Enter your password" required>
-            <br>
-            <label for="password2">Konfirmasi Password</label>
-            <input type="password" name="password_confirmation" id="password2" placeholder="Confirm your password" required>
-            <br>
-            <input type="submit" name="submit" value="Buat Akun">
-        </form>
+<center>
+    <main class="form-signin">
+      <form>
+        <h1 class="h1">Tambah Admin</h1>
+        <br>
 
-            <a href="{{ route('admin.index')}}">Lihat Data</a>
-            <br><br><br>
+        <div>
+          <form action="/action_page.php">
+            <select class="form-select" id="sel1" name="sellist1">
+            <option>Admin</option>
+            <option>Super Admin</option>
+          </select>
+        </form action="{{ route('admin.store') }}" method="POST">
+        @csrf
+        </div>
+        <br>
+        <div class="form-floating">
+          <input type="text" class="form-control" id="name" placeholder="Nama" name="name">
+          <label for="floatingInput">Nama</label>
+        </div>
+        <div class="form-floating">
+          <input type="text" class="form-control" id="nim" placeholder="NIM" name="nim">
+          <label for="floatingInput">NIM</label>
+        </div>
+        <div class="form-floating">
+          <input type="email" class="form-control" id="email" placeholder="name@example.com" name="email">
+          <label for="floatingInput">Alamat Email</label>
+        </div>
+        <br>
+        <div class="form-floating">
+          <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+          <label for="floatingPassword">Password</label>
+        </div>
+        <div class="form-floating">
+          <input type="password" class="form-control" id="password2" placeholder="Password" name="password_confirmation">
+          <label for="floatingPassword">Konfirmasi Password</label>
+        </div>
+        <button class="w-100 btn btn-lg btn-dark" type="submit" name="submit">Tambah</button>
+      </form>
+    </main>
+    </center>
+                <a href="{{ route('admin.index')}}">Lihat Data</a>
+                <br><br><br>
 
 
-    @if($errors->any())
-        @foreach($errors->all() as $error)
-        <p>{{ $error }}</p>
-        @endforeach
-    @endif
+        @if($errors->any())
+            @foreach($errors->all() as $error)
+            <p>{{ $error }}</p>
+            @endforeach
+        @endif
 
-    @if (session('success'))
-        <p>{{session('success')}}</p>
-    @endif
-</body>
+        @if (session('success'))
+            <p>{{session('success')}}</p>
+        @endif
+    </body>
+
+</main>
+
 </html>
+@endsection

@@ -1,6 +1,8 @@
 @extends('template')
 @section('content')
-<h4>Edit Poin</h4>
+
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+<center><h2>Edit Poin</h2></center>
 <table class="table">
     <thead class="table-dark">
         <tr>
@@ -51,4 +53,5 @@
         @endforeach
     </tbody>
 </table>
+</main>
 @endsection
