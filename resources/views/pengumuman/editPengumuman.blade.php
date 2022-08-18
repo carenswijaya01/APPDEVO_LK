@@ -49,7 +49,7 @@
                             <div class="form-group">
                                 <input type="hidden" name="oldImage" id="oldImage" value="{{$pengumuman->gambar}}">
                                 <label for="gambar" class="form-label mt-2"><b>Poster Kegiatan</b></label>
-                                <input type="file" class="form-control @error('gambar') is-invalid @enderror" id="gambar" name="gambar" onchange="previewImage()" required>
+                                <input type="file" class="form-control @error('gambar') is-invalid @enderror" id="gambar" name="gambar" onchange="previewImage()">
                                 <img src="{{ asset('storage/' . $pengumuman->gambar) }}" class="img-preview img-fluid mt-3 col-sm-4 d-block">
 
                                 @error('gambar')

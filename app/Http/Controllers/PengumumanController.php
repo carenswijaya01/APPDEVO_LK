@@ -82,7 +82,7 @@ class PengumumanController extends Controller
     public function update(Request $request, Pengumuman $pengumuman)
     {
         $data = $this->validate($request, [
-            'gambar'        => 'required|image|file|max:5120',
+            'gambar'        => 'image|file|max:5120',
             'judul'         => 'required',
             'penyelenggara' => 'required',
             'deskripsi'     => 'required'
