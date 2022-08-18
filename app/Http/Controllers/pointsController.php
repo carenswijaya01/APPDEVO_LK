@@ -41,8 +41,9 @@ class pointsController extends Controller
 
     public function show($id)
     {
-        $points = User::findOrFail($id)->point()->with(['user','admin','type_point'])->latest()->paginate(10);
-        return view('point.show',compact('points'));
+        $user = User::findOrFail($id);
+        $points = $user->point()->with(['user','admin','type_point'])->latest()->paginate(10);
+        return view('point.show',compact('points','user'));
     }
 
     public function edit(Point $point)

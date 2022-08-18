@@ -96,7 +96,7 @@ class AdminController extends Controller
         $data['password'] = is_null($data['password']) ? $admin->password : Hash::make($request->password);
 
         $admin->update($data);
-        return redirect()->back()->with('success', 'Data berhasil diubah');
+        return redirect('/admin/admin')->with('success', 'Data berhasil diubah');
     }
 
     /**
@@ -107,8 +107,8 @@ class AdminController extends Controller
      */
     public function destroy(Admin $admin)
     {
-        if ($admin->role == 'superadmin') return back()->withError("Data tidak bisa dihapus!");
+        if ($admin->role == 'superadmin') return redirect()->back()->with('error', 'Data tidak bisa dihapus!');
         $admin->delete();
-        return redirect()->back()->with(['success', 'Data berhasil dihapus!']);
+        return redirect()->back()->with('success', 'Data berhasil dihapus!');
     }
 }

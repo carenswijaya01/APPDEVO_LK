@@ -2,15 +2,9 @@
 @section('content')
 
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>POINTS</title>
-</head>
-<body>
+
 <h1>POINT</h1>
-    <a href="{{url('/admin/points/create')}}"> + tambah Data baru</a>
+    <a href="{{url('/admin/points/create')}}" class="btn btn-primary"> + tambah Data baru</a>
     <br/>
     <br/>
 
@@ -29,12 +23,12 @@
                 <td>{{$user->name}}</td>
                 <td>{{$user->nim}}</td>
                 <td>
-                    <a href="{{route('points.show',$user->id)}}">Detail Poin</a>
+                    <a href="{{route('points.show',$user->id)}}" class="btn btn-sm btn-info">Detail Poin</a>
                 </td>
             </tr>
         @endforeach
     </table>
 {{$users->links()}}
-</body>
+
 </main>
 @endsection

@@ -32,7 +32,6 @@ Route::group([
     'namespace' => 'App\\Http\\Controllers',
 ], function () {
 
-
     //    LOGIN ADMIN
     Route::get('login', 'LoginAdminController@formLogin')->name('admin.login');
     Route::post('login', 'LoginAdminController@login');
@@ -78,6 +77,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/home', fn () => view('home'));
     Route::get('/user/update-password', fn () => view('auth.mahasiswa.update-password'))->name('update-password-user');
     // DAFTAR-KEGIATAN
-    Route::get('/registration-program', [MemberProgramController::class, 'index']);
-    Route::post('/registration-program', [MemberProgramController::class, 'store']);
+//    Route::get('/registration-program', [MemberProgramController::class, 'index']);
+//    Route::post('/registration-program', [MemberProgramController::class, 'store']);
 });
