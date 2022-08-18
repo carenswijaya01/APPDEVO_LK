@@ -29,7 +29,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{ route('update-password-user') }}">Ganti Password</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('update-password-user') }}">Ganti Password&nbsp;&nbsp;&nbsp;</a></li>
                             <form action="{{ route('logout') }}" method="post">
                                 @csrf
                                 <button type="submit" class="btn btn-outline-light">logout</button>
@@ -41,50 +41,74 @@
             </nav>
 
     <!-- isi nya -->
-    <!-- carousel -->
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <!-- Jumbotron -->
+    <div class="container-fluid my-5">
+        <div class="jumbotron jumbotron-fluid text-center">
+            <p class="fs-1 fw-bolder">Poin KKM</p>
+
         </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active text-left">
-                <img src="/img/pic1.jpg" class="d-block w-100 h-75" alt="...">
-                <div class="carousel-caption text-start d-none d-md-block">
-                    <h1 class="display-5 fw-bold">First slide label</h1>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                    <!-- make button show more -->
-                    <a href="#" class="btn btn-outline-light" type="submit">Show more</a>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="/img/pic2.jpg" class="d-block w-100 h-75" alt="...">
-                <div class="carousel-caption text-start d-none d-md-block">
-                    <h1 class="display-5 fw-bold">Second slide label</h1>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                    <a href="#" class="btn btn-outline-light" type="submit">Show more</a>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="/img/pic3.jpg" class="d-block w-100 h-75" alt="...">
-                <div class="carousel-caption text-start d-none d-md-block">
-                    <h1 class="display-5 fw-bold">Third slide label</h1>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                    <a href="#" class="btn btn-outline-light" type="submit">Show more</a>
-                </div>
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
     </div>
-    <!-- carousel -->
+     <!-- Jumbotron -->
+     <div class="container-fluid my-5">
+        <div class="jumbotron jumbotron-fluid">
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">Jenis Poin</th>
+                    <th scope="col">Min.Poin</th>
+                    <th scope="col">Jumlah Poin</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">OMB</th>
+                    <td>150</td>
+                    <td>0</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Ketrampilan Profesional</th>
+                    <td>300</td>
+                    <td>0</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Keterampilan Bersifat Kemanusiaan</th>
+                    <td>250</td>
+                    <td>0</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Keterampilan Penunjang</th>
+                    <td>0</td>
+                    <td>0</td>
+                  </tr>
+                </tbody>
+              </table>
+            <hr>
+            <p class="fs-5 fw-bolder">OMB</p>
+            <div class="progress">
+            <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <hr>
+            <p class="fs-5 fw-bolder">Ketrampilan Profesional</p>
+            <div class="progress">
+            <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <hr>
+            <p class="fs-5 fw-bolder">Keterampilan Bersifat Kemanusiaan</p>
+            <div class="progress">
+            <div class="progress-bar bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <hr>
+            <p class="fs-5 fw-bolder">Keterampilan Penunjang</p>
+            <div class="progress">
+            <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <hr>
+        </div>
+        <br>
+        <br>
+    </div>
+    <br>
+    <!-- Jumbotron -->
 
     <!-- Jumbotron -->
     <div class="container-fluid my-5">
@@ -201,14 +225,6 @@
         </div>
     </div>
     <!-- album -->
-
-
-
-
-
-
-
-
     </main>
         <!-- Footer-->
         <footer class="bg-dark py-4 mt-auto">

@@ -7,6 +7,15 @@
         @endforeach
     @endif
 
+    <div class="cover" style="background-image:url(images/COVER.PNG);
+	background-size: cover;
+	height: 120vh;">
+    <div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-pic js-tilt" data-tilt>
+					<img src="images/img-01.png" alt="IMG">
+                </div>
     <form class="login100-form validate-form" action="{{route('login')}}" method="post" enctype="multipart/form-data">
         <span class="login100-form-title">
             Login Mahasiswa
@@ -47,5 +56,9 @@
             </a>
         </div>
     </form>
+
+            </div>
+        </div>
+    </div>
 
 @endsection
