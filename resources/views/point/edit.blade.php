@@ -17,7 +17,7 @@
         <label for="user">Mahasiswa</label>
         <select name="user_id" id="user">
             @foreach ($users as $user)
-            <option value="{{$user->id == $point->user_id}}">{{$user->name}}</option>
+            <option value="{{$user->id}}" @selected($user->id == $point->user_id)>{{$user->name}}</option>
             @endforeach
         </select><br>
         file : <input type="file" name="file" accept=".pdf"><br />

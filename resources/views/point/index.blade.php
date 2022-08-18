@@ -7,37 +7,29 @@
     <title>POINTS</title>
 </head>
 <body>
+<h1>POINT</h1>
     <a href="{{url('/admin/points/create')}}"> + tambah Data baru</a>
     <br/>
     <br/>
 
     <table border="1">
     <tr>
-        <th>Admin yang menambah</th>
+        <th>No</th>
         <th>Mahasiswa</th>
-        <th>FILE</th>
-        <th>Tipe Point</th>
-        <th>POINT</th>
+        <th>NIM</th>
+        <th>Aksi</th>
     </tr>
-    @foreach($points as $p)
-    <tr>
-        <td>{{$p->admin->name}}</td>
-        <td>{{$p->user->name}}</td>
-        {{--  TODO: tampilkan pdf --}}
-        <td><a href="{{asset('storage/'.$p->file)}}">{{$p->user->name}}</a></td>
-        <td>{{$p->type_point->name}}</td>
-        <td>{{$p->point}}</td>
-        <td>
-        <a href="{{ route('points.edit',$p->id) }}">EDIT</a>
-        <form action="{{route('points.destroy',$p->id)}}" method="post">
-        @csrf
-        @method('delete')
-        <input type="submit" value="Delete" onclick="return confirm('yakin ingin menghapus point ini?')">
-        </form>
-        </td>
-    </tr>
-    @endforeach
+        @foreach($users as $user)
+            <tr>
+                <td>{{$loop->iteration}}</td>
+                <td>{{$user->name}}</td>
+                <td>{{$user->nim}}</td>
+                <td>
+                    <a href="{{route('points.show',$user->id)}}">Detail Poin</a>
+                </td>
+            </tr>
+        @endforeach
     </table>
-{{$points->links()}}
+{{$users->links()}}
 </body>
 </html>

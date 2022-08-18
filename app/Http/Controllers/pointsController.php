@@ -14,8 +14,7 @@ class pointsController extends Controller
 
     public function index()
     {
-        $points = Point::with(['user', 'admin', 'type_point'])->paginate(10);
-        return view('point.index', ['points' => $points]);
+        return view('point.index', ['users' => User::paginate(10)]);
     }
     public function create()
     {
@@ -31,7 +30,7 @@ class pointsController extends Controller
         $validated = $request->validate([
             'user_id' => 'required|exists:users,id',
             'point' => 'required|numeric',
-            'file' => 'required|file|mimes:pdf|max:30000', // 30mb
+            'file' => 'required|file|mimes:pdf|max:10000', // 10mb
             'type_point_id' => 'required|numeric|exists:type_points,id',
         ]);
 
@@ -40,8 +39,10 @@ class pointsController extends Controller
         return redirect('/admin/points')->withSuccess("berhasil menambahkan point");
     }
 
-    public function show()
+    public function show($id)
     {
+        $points = User::findOrFail($id)->point()->with(['user','admin','type_point'])->latest()->paginate(10);
+        return view('point.show',compact('points'));
     }
 
     public function edit(Point $point)
