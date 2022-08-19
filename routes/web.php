@@ -5,6 +5,7 @@ use App\Http\Controllers\pointsController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TypePointController;
+use App\Models\Pengumuman;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,11 +21,13 @@ use Illuminate\Support\Facades\Route;
 
 // ROOT (GUEST)
 Route::get('/', function () {
-    return view('homepage');
+    $pengumuman = Pengumuman::paginate(10);
+    return view('homepage', compact('pengumuman'));
 });
 
 Route::get('/pengumuman', function () {
-    return view('pengumuman');
+    $pengumuman = Pengumuman::paginate(10);
+    return view('pengumuman', compact('pengumuman'));
 });
 
 Route::group([
@@ -35,6 +38,9 @@ Route::group([
     //    LOGIN ADMIN
     Route::get('login', 'LoginAdminController@formLogin')->name('admin.login');
     Route::post('login', 'LoginAdminController@login');
+
+    // Pengumuman
+    Route::resource('pengumuman', PengumumanController::class);
 
     // ADMIN & SUPER ADMIN
     Route::middleware(['auth:admin'])->group(function () {
@@ -65,10 +71,6 @@ Route::group([
         Route::get('/editKegiatan/{id}', 'KegiatanController@edit')->name('editKegiatan');
         Route::post('/updateKegiatan/{id}', 'KegiatanController@update')->name('updateKegiatan');
         Route::get('/deleteKegiatan/{id}', 'KegiatanController@destroy')->name('deleteKegiatan');
-
-        // Pengumuman
-        Route::resource('pengumuman', PengumumanController::class);
-        // Route::get('/daftarPengumuman', [PengumumanController::class, 'index']);  // (BISA PAKEK /PENGUMUMAN)
     });
 });
 
@@ -77,6 +79,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/home', fn () => view('home'));
     Route::get('/user/update-password', fn () => view('auth.mahasiswa.update-password'))->name('update-password-user');
     // DAFTAR-KEGIATAN
-//    Route::get('/registration-program', [MemberProgramController::class, 'index']);
-//    Route::post('/registration-program', [MemberProgramController::class, 'store']);
+    //    Route::get('/registration-program', [MemberProgramController::class, 'index']);
+    //    Route::post('/registration-program', [MemberProgramController::class, 'store']);
 });

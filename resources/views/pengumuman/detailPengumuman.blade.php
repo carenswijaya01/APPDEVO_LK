@@ -26,7 +26,8 @@
                     <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="/pengumuman">Pengumuman&nbsp;&nbsp;&nbsp;</a></li>
                     <li class="nav-item">
-                        <a href="{{ route('login') }}" class="btn btn-outline-light" type="submit">Login</a></li>
+                        <a href="{{ route('login') }}" class="btn btn-outline-light" type="submit">Login</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -46,8 +47,8 @@
                         <h5>Penyelenggara : {{$pengumuman->penyelenggara}}</h5>
 
                         <article>
-                            <div style="border: 1px solid rgb(100, 100, 100); height: auto; overflow: auto; padding: 15px; text-align: justify; width: auto;">
-                            {!! $pengumuman->deskripsi !!}
+                            <div style="text-align: justify;">
+                                {!! $pengumuman->deskripsi !!}
                             </div>
                         </article>
                     </div>
@@ -60,7 +61,9 @@
     <footer class="bg-dark py-4 mt-auto">
         <div class="container px-5">
             <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-                <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; KBM-LK</div></div>
+                <div class="col-auto">
+                    <div class="small m-0 text-white">Copyright &copy; KBM-LK</div>
+                </div>
                 <div class="col-auto">
                     <a class="link-light small" href="#!">Email</a>
                     <span class="text-white mx-1">&middot;</span>
@@ -72,4 +75,5 @@
         </div>
     </footer>
 </body>
+
 </html>
