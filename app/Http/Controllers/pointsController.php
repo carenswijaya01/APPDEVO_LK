@@ -16,6 +16,7 @@ class pointsController extends Controller
     {
         return view('point.index', ['users' => User::paginate(10)]);
     }
+
     public function create()
     {
         $typePoints = TypePoint::all();
@@ -23,6 +24,7 @@ class pointsController extends Controller
         $model = new Point;
         return view('point.create', compact('model', 'typePoints', 'users'));
     }
+
     public function store(Request $request)
     {
         $typePoint = TypePoint::findOrFail($request->type_point_id);
@@ -42,8 +44,8 @@ class pointsController extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
-        $points = $user->point()->with(['user','admin','type_point'])->latest()->paginate(10);
-        return view('point.show',compact('points','user'));
+        $points = $user->point()->with(['user', 'admin', 'type_point'])->latest()->paginate(10);
+        return view('point.show', compact('points', 'user'));
     }
 
     public function edit(Point $point)
@@ -84,6 +86,11 @@ class pointsController extends Controller
 
     public function detailPoint()
     {
-//        $point = Point::with(['user'])->
+        $points = Point::where('user_id', auth()->id())->join('type_points','type_points.id','=','points.type_point_id')
+            ->selectRaw('type_points.name, type_points.limit, sum(point) as point')->groupBy('type_points.name')->get();
+
+
+
+        return view('home', compact('points'));
     }
 }

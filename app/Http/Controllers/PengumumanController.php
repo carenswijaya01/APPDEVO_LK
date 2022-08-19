@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Storage;
 
 class PengumumanController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth:admin', 'can:role,"admin"'])->except('show');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -58,7 +62,6 @@ class PengumumanController extends Controller
      */
     public function show(Pengumuman $pengumuman)
     {
-        // dd($pengumuman);
         return view('pengumuman/detailPengumuman', compact('pengumuman'));
     }
 
