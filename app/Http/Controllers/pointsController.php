@@ -81,4 +81,9 @@ class pointsController extends Controller
         Storage::delete($point->file);
         return redirect()->back()->with('success', "Berhasil menghapus Point");
     }
+
+    public function detailPoint()
+    {
+//        $point = Point::with(['user'])->
+    }
 }

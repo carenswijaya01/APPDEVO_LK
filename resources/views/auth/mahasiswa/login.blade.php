@@ -1,12 +1,5 @@
 @extends('template.app')
 @section('content')
-
-    @if($errors->any())
-        @foreach($errors->all() as $error)
-            <p>{{ $error }}</p>
-        @endforeach
-    @endif
-
     <div class="cover" style="background-image:url(images/COVER.PNG);
 	background-size: cover;
 	height: 120vh;">
@@ -21,6 +14,16 @@
             Login Mahasiswa
         </span>
         @csrf
+
+        @if($errors->any())
+            @foreach($errors->all() as $error)
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{$error}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endforeach
+        @endif
+
         <div class="wrap-input100 validate-input" data-validate = "Email yang Valid dibutuhkan: ex@uksw.edu">
             <input class="input100" type="email" name="email" placeholder="Email">
             <span class="focus-input100"></span>

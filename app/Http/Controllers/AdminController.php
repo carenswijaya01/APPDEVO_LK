@@ -48,7 +48,7 @@ class AdminController extends Controller
 
         if ($admin) {
             //redirect dengan pesan sukses
-            return redirect()->back()->with(['success' => 'Data Berhasil Disimpan!']);
+            return redirect('/admin/admin')->with(['success' => 'Data Berhasil Disimpan!']);
         } else {
             //redirect dengan pesan error
             return redirect()->back()->with(['error' => 'Data Gagal Disimpan!']);

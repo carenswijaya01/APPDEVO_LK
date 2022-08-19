@@ -1,73 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title>Update Data</title>
-    <!-- Bootstrap core CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-
-<body>
-<main class="form-signin">
-    <h1> Edit Data</h1>
-    <ul>
-        <form action="{{ route('admin.update',$admin->id) }}" method="POST" enctype="multipart/form-data">
+@extends('template')
+@section('content')
+    <main class="form-signin">
+        <h1 class="h1">Edit Admin</h1>
+        <form action="{{ route('admin.update',$admin->id) }}" method="post">
             @csrf
             @method('put')
+            <br>
             <div class="form-floating">
-                <input type="hidden" class="form-control" name='id' id="id">
-                <br>
-                <label for="nim"></label>
+                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Nama"
+                       name="name" value="{{ $admin->name }}">
+                <label for="floatingInput">Nama</label>
+                @error('name')
+                <div class="invalid-feedback">{{$message}}</div> @enderror
             </div>
             <div class="form-floating">
-                <input type="text" name="nim" id="nim" placeholder="Enter your NIM" required value="{{$admin->nim}}">
-                <br>
-                <label for="name"></label>
+                <input type="text" class="form-control @error('nim') is-invalid @enderror" id="nim" placeholder="NIM"
+                       name="nim" value="{{$admin->nim}}">
+                <label for="floatingInput">NIM</label>
+                @error('nim')
+                <div class="invalid-feedback">{{$message}}</div> @enderror
             </div>
             <div class="form-floating">
-                <input type="text" name="name" id="name" placeholder="Enter your name" required
-                       value="{{$admin->name}}">
-                <br>
-                <label for="email"></label>
+                <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
+                       placeholder="name@example.com" name="email" value="{{$admin->email}}">
+                <label for="floatingInput">Alamat Email</label>
+                @error('email')
+                <div class="invalid-feedback">{{$message}}</div> @enderror
+            </div>
+            <br>
+            <strong class="text-secondary">Optional</strong>
+            <div class="form-floating">
+                <input type="password" class="form-control @error('password') is-invalid @enderror" id="password"
+                       placeholder="Password" name="password">
+                <label for="floatingPassword">Password</label>
+                @error('password')
+                <div class="invalid-feedback">{{$message}}</div> @enderror
             </div>
             <div class="form-floating">
-                <input type="email" name="email" id="email" placeholder="Enter your email address" required
-                       value="{{$admin->email}}">
-                <br>
-                <label for="password"></label>
+                <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror"
+                       id="password2" placeholder="Password" name="password_confirmation">
+                <label for="floatingPassword">Konfirmasi Password</label>
+                @error('password_confirmation')
+                <div class="invalid-feedback">{{$message}}</div> @enderror
             </div>
-            <div class="form-floating">
-                <input type="password" name="password" id="password" placeholder="Enter your password">
-                <br>
-                <label for="password2"></label>
-            </div>
-            <div class="form-floating">
-                <input type="password" name="password_confirmation" id="password2" placeholder="Confirm your password">
-                <br>
-                <input type="submit" name="Update" value="Edit Akun">
-            </div>
+            <button class="w-100 btn btn-lg btn-dark" type="submit" name="submit">Edit</button>
         </form>
-        <a href="{{route('admin.index')}}">Kembali</a>
-
-
-        @if($errors->any())
-            @foreach($errors->all() as $error)
-                <p>{{ $error }}</p>
-            @endforeach
-        @endif
-        @if (session('success'))
-            <p>{{session('success')}}</p>
-    @endif
-
-</main>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
-        integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
-        integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
-        crossorigin="anonymous"></script>
-<script src="/js/dashboard.js"></script>
-</body>
-
-</html>
+    </main>
+    </center>
+@endsection

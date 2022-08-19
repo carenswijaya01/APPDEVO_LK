@@ -25,7 +25,7 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>Role</th>
-                        <th>Update Data</th>
+                        <th>Aksi</th>
                     </tr>
                     </thead>
                     @php

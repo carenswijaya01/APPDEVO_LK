@@ -70,7 +70,7 @@
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{{ route('type-point.index') }}">
                   <span data-feather="home"></span>
-                  CRUD Poin
+                  Tipe Poin
                 </a>
               </li>
               @endcan
