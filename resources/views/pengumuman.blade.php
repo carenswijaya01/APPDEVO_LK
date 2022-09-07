@@ -26,8 +26,17 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="/pengumuman">Pengumuman&nbsp;&nbsp;&nbsp;</a></li>
-                        <li class="nav-item">
-                            <a href="{{ route('login') }}" class="btn btn-outline-light" type="submit">Login</a>
+                        <li>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Login
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                  <li><a href="{{ route('login') }}" class="btn btn-outline-light" type="submit">Admin</a></li>
+                                  <li><a href="" class="btn btn-outline-light" type="submit">Kegiatan</a></li>
+                                  <li><a href="" class="btn btn-outline-light" type="submit">Mahasiswa</a></li>
+                                </ul>
+                              </div>
                         </li>
                     </ul>
                 </div>

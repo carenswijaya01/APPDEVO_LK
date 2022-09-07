@@ -23,6 +23,14 @@
             @error('email')
            <div class="invalid-feedback">{{$message}}</div>            @enderror
         </div>
+        <div class="input-group mb-3">
+          
+          <select class="form-select" id="inputGroupSelect01">
+            <option selected>Pilih Role</option>
+            <option value="1">Admin</option>
+            <option value="2">Kegiatan</option>
+          </select>
+        </div>
         <br>
         <div class="form-floating">
           <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Password" name="password">

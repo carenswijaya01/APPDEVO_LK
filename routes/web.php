@@ -55,6 +55,7 @@ Route::group([
         // TYPE POINT
         Route::get('/type-point', [TypePointController::class, 'index'])->name('type-point.index');
         Route::put('/type-point', [TypePointController::class, 'update'])->name('type-point.update');
+        Route::get('/proposalKegiatan', fn () => view('proposal.proposal-kegiatan'))->name('proposal-kegiatan');
     });
 
     //    ADMIN
@@ -76,7 +77,7 @@ Route::group([
 
 // MAHASISWA
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/home', [pointsController::class,'detailPoint']);
+    Route::get('/home', [pointsController::class, 'detailPoint']);
     Route::get('/user/update-password', fn () => view('auth.mahasiswa.update-password'))->name('update-password-user');
     // DAFTAR-KEGIATAN
     //    Route::get('/registration-program', [MemberProgramController::class, 'index']);

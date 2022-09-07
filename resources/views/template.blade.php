@@ -81,6 +81,14 @@
                 </a>
               </li>
               @endcan
+              @can('role','superadmin')
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{ route('proposal-kegiatan') }}">
+                  <span data-feather="home"></span>
+                  Menu 3
+                </a>
+              </li>
+              @endcan
          @endguest
         </div>
     </nav>
