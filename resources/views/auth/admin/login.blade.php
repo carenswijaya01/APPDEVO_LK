@@ -23,7 +23,7 @@
         <link rel="stylesheet" type="text/css" href="/css/main.css">
     <!--===============================================================================================-->
 </head>
-<body> 
+<body>
     <div class="cover" style="background-image:url(/images/COVER.PNG);background-size: cover;height: 120vh;">
     <div class="limiter">
 		<div class="container-login100">
@@ -31,12 +31,12 @@
 				<div class="login100-pic js-tilt" data-tilt>
 					<img src="/images/img-01.png" alt="IMG">
                 </div>
-                <form class="login100-form validate-form" action="" method="post" enctype="/multipart/form-data">
+                <form class="login100-form validate-form" action="" method="post" >
                     <span class="login100-form-title">
                         Login Admin/Kegiatan
                     </span>
                     @csrf
-            
+
                     @if($errors->any())
                         @foreach($errors->all() as $error)
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -45,7 +45,7 @@
                             </div>
                         @endforeach
                     @endif
-            
+
                     <div class="wrap-input100 validate-input" data-validate = "Email yang Valid dibutuhkan: ex@uksw.edu">
                         <input class="input100" type="email" name="email" placeholder="Email">
                         <span class="focus-input100"></span>
@@ -53,7 +53,7 @@
                             <i class="fa fa-envelope" aria-hidden="true"></i>
                         </span>
                     </div>
-            
+
                     <div class="wrap-input100 validate-input" data-validate = "Password Dibutuhkan">
                         <input class="input100" type="password" name="password" placeholder="Password">
                         <span class="focus-input100"></span>
@@ -61,20 +61,34 @@
                             <i class="fa fa-lock" aria-hidden="true"></i>
                         </span>
                     </div>
-            
+
+
+                        <div class="wrap-input100 validate-input">
+
+                            <select class="input100 @error('role') is-invalid @enderror "
+                                id="inputGroupSelect01" name="role">
+                                <option value="admin" >Admin</option>
+                                <option value="event">Kegiatan</option>
+                            </select>
+                            @error('role')
+                            <div class="invalid-feedback">{{$message}}</div>
+                            @enderror
+                        </div>
+
+
                     <div class="container-login100-form-btn">
                         <button class="login100-form-btn">
                             Login
                         </button>
                     </div>
-            
+
                     <div class="text-center p-t-12">
                         <span class="txt1">
                             <input type="checkbox" name="remember" id="remember"><label for="remember">Ingatkan Saya</label>
                         </span>
                     </div>
                     <div class="text-center p-t-136">
-                    
+
                     </div>
                 </form>
 

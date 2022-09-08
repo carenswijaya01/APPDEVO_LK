@@ -18,7 +18,7 @@ class PengumumanSeeder extends Seeder
         $anouncements = [];
         for ($i = 0; $i < 50; $i++)
             $anouncements[] = [
-                'gambar' => fake()->image(storage_path('app/pengumuman')),
+                'gambar' => fake()->unique()->name(),
                 'judul' => fake()->text(100),
                 'penyelenggara' => fake()->name(),
                 'deskripsi' => fake()->paragraphs(6,true),

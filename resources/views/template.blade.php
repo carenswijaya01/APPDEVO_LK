@@ -14,7 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    
+
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="style5.css">
 
@@ -272,7 +272,7 @@ a.article, a.article:hover {
         <nav id="sidebar" style="overflow-x:hidden">
             <div class="sidebar-header">
                 <h3>Website LK</h3>
-                <h6>Super Admin</h6>
+                <h6>{{auth()->user()->role}}</h6>
                 <h5></h5>
             </div>
 
@@ -334,8 +334,25 @@ a.article, a.article:hover {
                       Admin
                     </a>
                   </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ route('event.index') }}">
+                      <i class="fa-solid fa-user fa-md mx-2 my-2"></i>
+                      Kegiatan
+                    </a>
+                  </li>
                   @endcan
-                  
+
+                  {{-- kegiatan sidebar --}}
+                  @can('role', 'event')
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ route('event.index') }}">
+                      <i class="fa-solid fa-user fa-md mx-2 my-2"></i>
+                      Proposal
+                    </a>
+                  </li>
+                  @endcan
+
              @endguest
             </ul>
         </nav>
@@ -346,7 +363,7 @@ a.article, a.article:hover {
             <div class="col-12">
               <nav class="navbar navbar-expand-lg navbar-light bg-light">
                   <div class="container-fluid">
-  
+
                       <button type="button" id="sidebarCollapse" class="navbar-btn">
                           <span></span>
                           <span></span>
@@ -355,7 +372,7 @@ a.article, a.article:hover {
                       <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                           <i class="fas fa-align-justify"></i>
                       </button>
-  
+
                       <div class="collapse navbar-collapse text-right" id="navbarSupportedContent">
                           <ul class="nav navbar-nav ml-auto">
                               <li class="nav-item">
@@ -370,11 +387,11 @@ a.article, a.article:hover {
                       </div>
                   </div>
               </nav>
-              
+
             </div>
           </div>
-            
-            
+
+
           <div>
               @yield('content')
           </div>

@@ -26,13 +26,13 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container px-5">
-{{--                <a class="navbar-brand" href="/">{{ auth()->user()->name }}</a>--}}
+               <a class="navbar-brand" href="/">{{ auth()->user()->name }}</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <!-- <li class="nav-item"><a class="nav-link" href="/">Home</a></li> -->
-{{--                        <li class="nav-item"><a class="nav-link" href="{{ route('update-password-user') }}">Ganti Password&nbsp;&nbsp;&nbsp;</a></li>--}}
-{{--                        <form action="{{ route('logout') }}" method="post">--}}
+                       <li class="nav-item"><a class="nav-link" href="{{ route('update-password-user') }}">Ganti Password&nbsp;&nbsp;&nbsp;</a></li>
+                        <form action="{{ route('logout') }}" method="post">
                             @csrf
                             <button type="submit" class="btn btn-outline-light">logout</button>
                         </form>
@@ -53,6 +53,9 @@
         <!-- Jumbotron -->
         <div class="container-fluid my-5">
             <div class="jumbotron jumbotron-fluid">
+
+    <a href="{{ route('points.show.user')}}" class="btn btn-sm btn-primary mb-3">Detail Point</a>
+
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -75,7 +78,7 @@
                 <hr>
                 <p class="fs-5 fw-bolder">Target Poin</p>
                 <div class="progress">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="250"></div>
+                    <div class="progress-bar bg-success" role="progressbar" style="width: {{$result}}%" aria-valuenow="2" aria-valuemin="0" aria-valuemax="4"></div>
                 </div>
             </div>
             <br>

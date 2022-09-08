@@ -9,7 +9,7 @@ class LoginAdminController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('guest:admin',['except'=>'logout']);
+        $this->middleware('guest:admin', ['except' => 'logout']);
     }
 
     public function formLogin()
@@ -20,9 +20,13 @@ class LoginAdminController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'email'=>'required|email|exists:admins',
-            'password'=>'required'
+            'email' => 'required|email|exists:admins',
+            'password' => 'required',
+            'role' => 'required'
         ]);
+
+        if ($request->role != 'event')
+            $credentials['role'] = ['admin', 'superadmin'];
 
         if (Auth::guard('admin')->attempt($credentials, $request->remember)) {
             $request->session()->regenerate();

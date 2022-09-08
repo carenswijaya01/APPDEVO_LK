@@ -6,7 +6,7 @@
           <div class="card p-4" style="background-color:#ffffff;box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;">
               <h1 class="mt-2">Tambah Admin</h1>
               <hr class=" " style="height: 2px;">
-             
+
           </div>
       </div>
       <div class="col-12">
@@ -41,7 +41,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="form-group">
+                  {{-- <div class="form-group">
                     <div class="row">
                       <div class="col-12">
                         <div class="input-group mb-3">
@@ -53,8 +53,8 @@
                         </div>
                       </div>
                     </div>
-                  </div>
-                
+                  </div> --}}
+
                   <br>
                   <div class="form-group">
                     <div class="row">
@@ -72,7 +72,7 @@
                       </div>
                     </div>
                   </div>
-            
+
                   <hr class="mt-4 mb-4">
                   <button class="col-2 btn btn-md btn-dark" type="submit" name="submit" style="background:#003289">Tambah</button>
                 </form>
@@ -81,6 +81,5 @@
       </div>
   </div>
 </div>
-    
-        
+
 @endsection
