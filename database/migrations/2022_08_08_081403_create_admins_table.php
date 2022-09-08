@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nim');
             $table->string('name');
             $table->string('email');
-            $table->enum('role',['superadmin','admin',]);
+            $table->enum('role',['superadmin','admin','event']);
             $table->string('password');
             $table->timestamps();
         });

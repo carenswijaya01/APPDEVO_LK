@@ -86,11 +86,24 @@ class pointsController extends Controller
 
     public function detailPoint()
     {
-        $points = Point::where('user_id', auth()->id())->join('type_points','type_points.id','=','points.type_point_id')
+
+        $points = Point::where('user_id', auth()->id())->join('type_points', 'type_points.id', '=', 'points.type_point_id')
             ->selectRaw('type_points.name, type_points.limit, sum(point) as point')->groupBy('type_points.name')->get();
 
+        $result = 0;
+        foreach ($points as $point)
+            if ($point->point >= $point->limit)
+                $result += 25;
 
 
-        return view('home', compact('points'));
+        return view('home', compact('points', 'result'));
+    }
+
+
+    public function showUserPoint()
+    {
+        $user = User::findOrFail(auth()->id());
+        $points = $user->point()->with(['user', 'admin', 'type_point'])->latest()->paginate(10);
+        return view('user-point', compact('points', 'user'));
     }
 }

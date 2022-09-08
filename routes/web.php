@@ -78,6 +78,7 @@ Route::group([
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/home', [pointsController::class,'detailPoint']);
     Route::get('/user/update-password', fn () => view('auth.mahasiswa.update-password'))->name('update-password-user');
+    Route::get('/point/show-user/', [pointsController::class, 'showUserPoint'])->name('points.show.user');
     // DAFTAR-KEGIATAN
     //    Route::get('/registration-program', [MemberProgramController::class, 'index']);
     //    Route::post('/registration-program', [MemberProgramController::class, 'store']);
