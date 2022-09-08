@@ -47,6 +47,8 @@ Route::group([
     Route::middleware(['auth:admin,event'])->group(function () {
         Route::post('logout', 'LoginAdminController@logout')->name('admin.logout');
         Route::get('/', fn () => view('dashboard'))->name('dashboard');
+        Route::get('/tentang-kegiatan', fn () => view('pemegang-kegiatan.proposal-kegiatan.tentang-kegiatan'))->name('tentang-kegiatan');
+        Route::get('/tentang-anggaran', fn () => view('pemegang-kegiatan.proposal-anggaran.tentang-anggaran'))->name('tentang-anggaran');
     });
 
     //    SUPER ADMIN

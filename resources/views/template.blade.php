@@ -22,6 +22,9 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    
+    <!-- Modal -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
 <style>
     /*
@@ -33,6 +36,14 @@ trix-toolbar [data-trix-button-group="file-tools"] {
     display: none;
 }
 
+.header_img {
+	width: 120px;
+	height: 135px
+}
+
+.header_img img {
+	width: 120px
+}
 
 body {
     font-family: 'Poppins', sans-serif;
@@ -95,8 +106,8 @@ a, a:hover, a:focus {
 
 
 #sidebar {
-    min-width: 250px;
-    max-width: 250px;
+    min-width: 300px;
+    max-width: 300px;
     background: #003289d2;
     color: #fff;
     transition: all 0.6s cubic-bezier(0.945, 0.020, 0.270, 0.665);
@@ -271,15 +282,20 @@ a.article, a.article:hover {
         <!-- Sidebar Holder -->
         <nav id="sidebar" style="overflow-x:hidden">
             <div class="sidebar-header">
-                <h3>Website LK</h3>
-                <h6>{{auth()->user()->role}}</h6>
-                <h5></h5>
+                <center>
+                    <div class="header_img mt-2">
+                        <img class="" src="/img/logo_lk.png" alt="">
+                    </div>
+                </center>
+                <h4>Lembaga Kemahasiswaan FTI</h4>
+                <h6 class="mt-4">{{auth()->user()->role}}</h6>
+                
             </div>
 
             <ul class="nav flex-column mt-2">
                 @guest("admin")
                   @else
-                  @can('role','admin')
+                  @can('role','')
                   <li class="nav-item ">
                     <a class="nav-link active" aria-current="page" href="{{ route('daftarKegiatan') }}">
                       <i class="fa-sharp fa-solid fa-clipboard-list fa-lg mx-2 my-2"></i>
@@ -287,7 +303,8 @@ a.article, a.article:hover {
                     </a>
                   </li>
                   @endcan
-                  @can('role','admin')
+                  {{-- INPOST --}}
+                  @can('role','')
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ route('pengumuman.index') }}">
                       <i class="fa-sharp fa-solid fa-bullhorn fa-md mx-2 my-2"></i>
@@ -295,7 +312,8 @@ a.article, a.article:hover {
                     </a>
                   </li>
                   @endcan
-                  @can('role','admin')
+                  {{-- INPOST --}}
+                  @can('role','')
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ route('points.index') }}">
                       <i class="fa-solid fa-upload fa-md mx-2 my-2"></i>
@@ -346,9 +364,17 @@ a.article, a.article:hover {
                   {{-- kegiatan sidebar --}}
                   @can('role', 'event')
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ route('event.index') }}">
-                      <i class="fa-solid fa-user fa-md mx-2 my-2"></i>
-                      Proposal
+                    <a class="nav-link active" aria-current="page" href="{{ route('tentang-kegiatan') }}">
+                        <i class="fa-solid fa-file-invoice fa-lg mx-2 my-2"></i>
+                        Tentang Kegiatan
+                    </a>
+                  </li>
+                  @endcan
+                  @can('role', 'event')
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ route('tentang-anggaran') }}">
+                        <i class="fa-sharp fa-solid fa-file-invoice-dollar fa-lg mx-2 my-2"></i>
+                        Tentang Anggaran
                     </a>
                   </li>
                   @endcan

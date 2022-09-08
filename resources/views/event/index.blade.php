@@ -37,8 +37,8 @@
                             <thead style="background:#003289;" class="text-light">
                                 <tr>
                                     <th>No.</th>
-                                    <th>NIM</th>
-                                    <th>Name</th>
+                                    <th>Nama Kegiatan</th>
+                                    <th>Nama Pemegang Kegiatan</th>
                                     <th>Email</th>
                                     <th>Role</th>
                                     <th>Aksi</th>
@@ -50,8 +50,8 @@
                             @foreach ($events as $event)
                             <tr>
                                 <th>{{$i++}}</th>
-                                <th>{{$event->nim}}</th>
                                 <th>{{$event->name}}</th>
+                                <th>{{$event->nim}}</th>
                                 <th>{{$event->email}}</th>
                                 <th>{{$event->role}}</th>
                                 <th>

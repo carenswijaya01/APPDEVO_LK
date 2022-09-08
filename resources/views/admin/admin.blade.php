@@ -41,19 +41,24 @@
                       </div>
                     </div>
                   </div>
-                  {{-- <div class="form-group">
+                  <div class="form-group">
                     <div class="row">
                       <div class="col-12">
                         <div class="input-group mb-3">
                           <select class="form-select form-select-lg" id="inputGroupSelect01">
                             <option selected>Pilih Role</option>
-                            <option value="1">Admin</option>
-                            <option value="2">Kegiatan</option>
+                            <option value="1">Bidang</option>
+                            <option value="2">Sekretaris SMF</option>
+                            <option value="3">Sekretaris BPMF</option>
+                            <option value="4">Bendahara SMF</option>
+                            <option value="5">Komisi A</option>
+                            <option value="6">Komisi C</option>
+                            <option value="7">INPOST</option>
                           </select>
                         </div>
                       </div>
                     </div>
-                  </div> --}}
+                  </div>
 
                   <br>
                   <div class="form-group">
