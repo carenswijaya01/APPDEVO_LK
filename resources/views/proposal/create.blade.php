@@ -1,8 +1,8 @@
 @extends('template')
 @section('content')
 <main class="form-signin">
-    <h1 class="h1">Tambah Admin</h1>
-    <form action="{{ route('admin.store') }}" method="post">
+    <h1 class="h1">Tambah Kegiatan</h1>
+    <form action="{{ route('proposal.store') }}" method="post">
         @csrf
         <br>
         <div class="form-floating">

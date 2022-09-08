@@ -52,5 +52,6 @@
                 </table>
                 {{ $admin->links() }}
             </div>
+    </div>
 
 @endsection

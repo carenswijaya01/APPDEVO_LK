@@ -4,6 +4,7 @@ use App\Http\Controllers\MemberProgramController;
 use App\Http\Controllers\pointsController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\TypePointController;
 use App\Models\Pengumuman;
 use Illuminate\Support\Facades\Route;
@@ -43,7 +44,7 @@ Route::group([
     Route::resource('pengumuman', PengumumanController::class);
 
     // ADMIN & SUPER ADMIN
-    Route::middleware(['auth:admin'])->group(function () {
+    Route::middleware(['auth:admin,event'])->group(function () {
         Route::post('logout', 'LoginAdminController@logout')->name('admin.logout');
         Route::get('/', fn () => view('dashboard'))->name('dashboard');
     });
@@ -55,6 +56,8 @@ Route::group([
         // TYPE POINT
         Route::get('/type-point', [TypePointController::class, 'index'])->name('type-point.index');
         Route::put('/type-point', [TypePointController::class, 'update'])->name('type-point.update');
+        Route::get('/proposalKegiatan', fn () => view('proposal.proposal-kegiatan'))->name('proposal-kegiatan');
+        Route::resource('proposal',EventController::class);
     });
 
     //    ADMIN
@@ -76,7 +79,7 @@ Route::group([
 
 // MAHASISWA
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/home', [pointsController::class,'detailPoint']);
+    Route::get('/home', [pointsController::class, 'detailPoint']);
     Route::get('/user/update-password', fn () => view('auth.mahasiswa.update-password'))->name('update-password-user');
     Route::get('/point/show-user/', [pointsController::class, 'showUserPoint'])->name('points.show.user');
     // DAFTAR-KEGIATAN

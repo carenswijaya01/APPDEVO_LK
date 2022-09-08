@@ -48,16 +48,12 @@
                   Pengumuman
                 </a>
               </li>
-              @endcan
-              @can('role','admin')
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{{ route('daftarKegiatan') }}">
                   <span data-feather="home"></span>
                   Daftar Kegiatan
                 </a>
               </li>
-              @endcan
-              @can('role','admin')
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{{ route('points.index') }}">
                   <span data-feather="home"></span>
@@ -65,6 +61,8 @@
                 </a>
               </li>
               @endcan
+
+              {{-- Super admin --}}
               @can('role','superadmin')
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{{ route('type-point.index') }}">
@@ -72,12 +70,26 @@
                   Tipe Poin
                 </a>
               </li>
-              @endcan
-              @can('role','superadmin')
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{{ route('admin.index') }}">
                   <span data-feather="home"></span>
                   Admin
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{ route('proposal.index') }}">
+                  <span data-feather="home"></span>
+                  Kegiatan
+                </a>
+              </li>
+              @endcan
+
+              {{-- kegiatan --}}
+              @can('role','event')
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="">
+                  <span data-feather="home"></span>
+                  Menu untuk kegatan
                 </a>
               </li>
               @endcan

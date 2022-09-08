@@ -6,7 +6,7 @@ use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class AdminController extends Controller
+class EventController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $admin = Admin::where('role', 'admin')->orWhere('role', 'superadmin')->paginate(10);
-        return view('admin.dataadmin', compact('admin'));
+        $admin = Admin::where('role', 'event')->paginate(10);
+        return view('proposal.index', ['events'=>$admin]);
     }
 
     /**
@@ -26,7 +26,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('admin.admin');
+        return view('proposal.create');
     }
 
     /**
@@ -44,11 +44,11 @@ class AdminController extends Controller
             'password'   => 'required | confirmed',
         ]);
         $data['password'] = Hash::make($data['password']);
-        $admin = Admin::create($data + ['role' => 'admin']);
+        $admin = Admin::create($data + ['role' => 'event']);
 
         if ($admin) {
             //redirect dengan pesan sukses
-            return redirect('/admin/admin')->with(['success' => 'Data Berhasil Disimpan!']);
+            return redirect()->route('proposal.index')->with(['success' => 'Data Berhasil Disimpan!']);
         } else {
             //redirect dengan pesan error
             return redirect()->back()->with(['error' => 'Data Gagal Disimpan!']);
@@ -72,9 +72,9 @@ class AdminController extends Controller
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function edit(Admin $admin)
+    public function edit(Admin $proposal)
     {
-        return view('admin.edit', compact('admin'));
+        return view('proposal.edit', ['event' => $proposal]);
     }
 
     /**
@@ -84,7 +84,7 @@ class AdminController extends Controller
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Admin $admin)
+    public function update(Request $request, Admin $proposal)
     {
         $data = $this->validate($request, [
             'nim' => 'required',
@@ -93,10 +93,10 @@ class AdminController extends Controller
             'password' => 'confirmed'
         ]);
 
-        $data['password'] = is_null($data['password']) ? $admin->password : Hash::make($request->password);
+        $data['password'] = is_null($data['password']) ? $proposal->password : Hash::make($request->password);
 
-        $admin->update($data);
-        return redirect('/admin/admin')->with('success', 'Data berhasil diubah');
+        $proposal->update($data);
+        return redirect()->route('proposal.index')->with('success', 'Data berhasil diubah');
     }
 
     /**
@@ -105,10 +105,9 @@ class AdminController extends Controller
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Admin $admin)
+    public function destroy(Admin $proposal)
     {
-        if ($admin->role == 'superadmin') return redirect()->back()->with('error', 'Data tidak bisa dihapus!');
-        $admin->delete();
+        $proposal->delete();
         return redirect()->back()->with('success', 'Data berhasil dihapus!');
     }
 }
