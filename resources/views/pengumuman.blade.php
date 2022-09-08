@@ -18,7 +18,7 @@
 <body class="d-flex flex-column h-100">
     <main class="flex-shrink-0">
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background: #003289">
             <div class="container px-5">
                 <a class="navbar-brand" href="/">Lembaga Kemahasiswaan</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -28,13 +28,13 @@
                         <li class="nav-item"><a class="nav-link" href="/pengumuman">Pengumuman&nbsp;&nbsp;&nbsp;</a></li>
                         <li>
                             <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="btn dropdown-toggle drp-login"  type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                     Login
                                 </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                  <li><a href="{{ route('login') }}" class="btn btn-outline-light" type="submit">Admin</a></li>
-                                  <li><a href="" class="btn btn-outline-light" type="submit">Kegiatan</a></li>
-                                  <li><a href="" class="btn btn-outline-light" type="submit">Mahasiswa</a></li>
+                                <ul class="dropdown-menu bg-light " aria-labelledby="dropdownMenuButton1">
+                                  <li><a href="{{ route('admin.login') }}" class="btn btn-light" type="submit">Admin/Kegiatan</a></li>
+                                  <hr>
+                                  <li><a href="{{ route('login') }}" class="btn btn-light" type="submit">Mahasiswa</a></li>
                                 </ul>
                               </div>
                         </li>
@@ -72,11 +72,11 @@
     </main>
 
     <!-- Footer-->
-    <footer class="bg-dark py-4 mt-5">
+    <footer class="py-4 mt-auto" style="background: #003289">
         <div class="container px-5">
             <div class="row align-items-center justify-content-between flex-column flex-sm-row">
                 <div class="col-auto">
-                    <div class="small m-0 text-white">Copyright &copy; KBM-LK</div>
+                    <div class="small m-0 text-white">Copyright &copy; KBM-AppDev</div>
                 </div>
                 <div class="col-auto">
                     <a class="link-light small" href="#!">Email</a>

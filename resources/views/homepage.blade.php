@@ -19,12 +19,38 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/stylesa.css" rel="stylesheet" />
+
+    <style>
+        .btn-lk{
+            background: #003289d2;
+            color: #fff;
+        }
+        .btn-lk:hover{
+            color: #003289;
+            background: #fff;
+            border: 2px solid #003289;
+            transition: .5s;
+        }
+        .drp-login{
+            background: #003289;
+            color: white;
+        }
+        .drp-login:hover{
+            background: white;
+            color: #003289;
+            transition: .5s;
+        }
+        .hero {
+            margin-top: 100px;
+            margin-bottom: 50px;
+        }
+    </style>
 </head>
 
 <body class="d-flex flex-column h-100">
     <main class="flex-shrink-0">
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background: #003289">
             <div class="container px-5">
                 <a class="navbar-brand" href="/">Lembaga Kemahasiswaan</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -34,10 +60,10 @@
                         <li class="nav-item"><a class="nav-link" href="/pengumuman">Pengumuman&nbsp;&nbsp;&nbsp;</a></li>
                         <li>
                             <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="btn dropdown-toggle drp-login"  type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                     Login
                                 </button>
-                                <ul class="dropdown-menu bg-light" aria-labelledby="dropdownMenuButton1">
+                                <ul class="dropdown-menu bg-light " aria-labelledby="dropdownMenuButton1">
                                   <li><a href="{{ route('admin.login') }}" class="btn btn-light" type="submit">Admin/Kegiatan</a></li>
                                   <hr>
                                   <li><a href="{{ route('login') }}" class="btn btn-light" type="submit">Mahasiswa</a></li>
@@ -59,7 +85,7 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active text-left">
-                    <img src="/img/pic1.jpg" class="d-block w-100 h-75" alt="...">
+                    <img src="/img/gambar1.png" class="d-block w-100 h-75" alt="...">
                     <div class="carousel-caption text-start d-none d-md-block">
                         <h1 class="display-5 fw-bold">First slide label</h1>
                         <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
@@ -68,7 +94,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="/img/pic2.jpg" class="d-block w-100 h-75" alt="...">
+                    <img src="/img/gambar2.png" class="d-block w-100 h-75" alt="...">
                     <div class="carousel-caption text-start d-none d-md-block">
                         <h1 class="display-5 fw-bold">Second slide label</h1>
                         <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
@@ -76,7 +102,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="/img/pic3.jpg" class="d-block w-100 h-75" alt="...">
+                    <img src="/img/gambar3.png" class="d-block w-100 h-75" alt="...">
                     <div class="carousel-caption text-start d-none d-md-block">
                         <h1 class="display-5 fw-bold">Third slide label</h1>
                         <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
@@ -94,9 +120,24 @@
             </button>
         </div>
         <!-- carousel -->
-
+        <br>
+        <div class="container hero" id="about">
+            <div class="row featurette">
+              <div class="col-md-6 order-md-6">
+                <h2 class="featurette-heading">Lembaga Kemahasiswaan.</h2>
+                <p class="lead">Pembinaan dan pengembangan mahasiswa UKSW dilakukan melalui sebuah Skenario Pola Pembinaan dan Pengembangan Mahasiswa (SPPM). Profil lulusan UKSW adalah creative minority yang mempunyai dua kompetensi dasar, yaitu humanistik (pembentukan karakter dan kepribadian) dan profesional (pengembangan profesionalisme sesuai disiplin ilmunya). </p>
+                <div class="col-12">
+                    <a href="https://fti.uksw.edu/kemahasiswaan.html" target="_blank" class="btn btn-lg mb-1 col-5 btn-lk" >Selengkapnya</a>
+                </div>
+              </div>
+              <div class="col-md-6 order-md-6">
+                <img src="/img/gambar4.jpg" alt="" width="700px" height="400px">
+              </div>
+            </div>
+         </div>
+         <br>
         <!-- Jumbotron -->
-        <div class="container-fluid my-5">
+        <div class="container-fluid my-5 ">
             <div class="jumbotron jumbotron-fluid text-center">
                 <p class="fs-1 fw-bolder">Pengumuman</p>
                 <hr>
@@ -120,7 +161,7 @@
                             </div>
                             <!-- <p class="card-text">{!!\Illuminate\Support\Str::limit($p->deskripsi,100,'...')!!}</p> -->
                             <div class="d-grid gap-2 d-md-block">
-                                <a href="{{ route('pengumuman.show',$p->id)}}" class="btn btn-primary">Selengkapnya</a>
+                                <a href="{{ route('pengumuman.show',$p->id)}}" class="btn btn-lk">Selengkapnya</a>
                             </div>
                         </div>
                     </div>
@@ -133,7 +174,7 @@
 
         <!-- See All button -->
         <div class="container text-center mb-5">
-            <a href="/pengumuman" class="btn btn-outline-primary btn-lg px-4">Lihat Semua Pengumuman</a>
+            <a href="/pengumuman" class="btn btn-lg btn-lk px-4">Lihat Semua Pengumuman</a>
         </div>
 
 
@@ -143,11 +184,11 @@
 
     </main>
     <!-- Footer-->
-    <footer class="bg-dark py-4 mt-auto">
+    <footer class="py-4 mt-auto" style="background: #003289">
         <div class="container px-5">
             <div class="row align-items-center justify-content-between flex-column flex-sm-row">
                 <div class="col-auto">
-                    <div class="small m-0 text-white">Copyright &copy; KBM-LK</div>
+                    <div class="small m-0 text-white">Copyright &copy; KBM-AppDev</div>
                 </div>
                 <div class="col-auto">
                     <a class="link-light small" href="#!">Email</a>

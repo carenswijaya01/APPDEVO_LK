@@ -15,8 +15,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        $admin = Admin::where('role', 'event')->paginate(10);
-        return view('proposal.index', ['events'=>$admin]);
+        $event = Admin::where('role', 'event')->paginate(10);
+        return view('event.index', ['events'=>$event]);
     }
 
     /**
@@ -26,7 +26,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        return view('proposal.create');
+        return view('event.create');
     }
 
     /**
@@ -48,7 +48,7 @@ class EventController extends Controller
 
         if ($admin) {
             //redirect dengan pesan sukses
-            return redirect()->route('proposal.index')->with(['success' => 'Data Berhasil Disimpan!']);
+            return redirect()->route('event.index')->with(['success' => 'Data Berhasil Disimpan!']);
         } else {
             //redirect dengan pesan error
             return redirect()->back()->with(['error' => 'Data Gagal Disimpan!']);
@@ -72,9 +72,9 @@ class EventController extends Controller
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function edit(Admin $proposal)
+    public function edit(Admin $event)
     {
-        return view('proposal.edit', ['event' => $proposal]);
+        return view('event.edit', ['event' => $event]);
     }
 
     /**
@@ -84,7 +84,7 @@ class EventController extends Controller
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Admin $proposal)
+    public function update(Request $request, Admin $event)
     {
         $data = $this->validate($request, [
             'nim' => 'required',
@@ -93,10 +93,10 @@ class EventController extends Controller
             'password' => 'confirmed'
         ]);
 
-        $data['password'] = is_null($data['password']) ? $proposal->password : Hash::make($request->password);
+        $data['password'] = is_null($data['password']) ? $event->password : Hash::make($request->password);
 
-        $proposal->update($data);
-        return redirect()->route('proposal.index')->with('success', 'Data berhasil diubah');
+        $event->update($data);
+        return redirect()->route('event.index')->with('success', 'Data berhasil diubah');
     }
 
     /**
@@ -105,9 +105,9 @@ class EventController extends Controller
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Admin $proposal)
+    public function destroy(Admin $event)
     {
-        $proposal->delete();
+        $event->delete();
         return redirect()->back()->with('success', 'Data berhasil dihapus!');
     }
 }

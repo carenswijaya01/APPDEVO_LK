@@ -57,7 +57,7 @@ Route::group([
         Route::get('/type-point', [TypePointController::class, 'index'])->name('type-point.index');
         Route::put('/type-point', [TypePointController::class, 'update'])->name('type-point.update');
         Route::get('/proposalKegiatan', fn () => view('proposal.proposal-kegiatan'))->name('proposal-kegiatan');
-        Route::resource('proposal',EventController::class);
+        Route::resource('event',EventController::class);
     });
 
     //    ADMIN
