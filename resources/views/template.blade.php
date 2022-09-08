@@ -313,7 +313,7 @@ a.article, a.article:hover {
                   @endcan
                   @can('role','admin')
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="">
+                    <a class="nav-link active" aria-current="page" href="{{ route('proposal-anggaran') }}">
                       <i class="fa-sharp fa-solid fa-file-invoice-dollar fa-lg mx-2 my-2"></i>
                       Proposal Anggaran
                     </a>

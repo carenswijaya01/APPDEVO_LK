@@ -53,10 +53,10 @@
                                     <th></th>
                                     <th>
                                         <div class="row">
-                                            <a href="" class="btn btn-primary">Unduh</a>
+                                            <a href="" class="btn btn-primary mb-2">Unduh</a>
                                         </div>
                                         <div class="row">
-                                            <a href="" class="btn btn-danger" onclick="return confirm('Ingin Menyatakan Bahwa Direvisi ?')">Revisi</a>
+                                            <a href="" class="btn btn-danger mb-2" onclick="return confirm('Ingin Menyatakan Bahwa Direvisi ?')">Revisi</a>
                                         </div>
                                         <div class="row">
                                             <a href="" class="btn btn-success" onclick="return confirm('Ingin Menyatakan Bahwa Fix?')">Fix</a>

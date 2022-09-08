@@ -55,7 +55,6 @@ Route::group([
         // TYPE POINT
         Route::get('/type-point', [TypePointController::class, 'index'])->name('type-point.index');
         Route::put('/type-point', [TypePointController::class, 'update'])->name('type-point.update');
-        Route::get('/proposalKegiatan', fn () => view('proposal.proposal-kegiatan'))->name('proposal-kegiatan');
     });
 
     //    ADMIN
@@ -72,6 +71,8 @@ Route::group([
         Route::get('/editKegiatan/{id}', 'KegiatanController@edit')->name('editKegiatan');
         Route::post('/updateKegiatan/{id}', 'KegiatanController@update')->name('updateKegiatan');
         Route::get('/deleteKegiatan/{id}', 'KegiatanController@destroy')->name('deleteKegiatan');
+        Route::get('/proposalKegiatan', fn () => view('proposal.proposal-kegiatan'))->name('proposal-kegiatan');
+        Route::get('/proposalAnggaran', fn () => view('proposal.proposal-anggaran'))->name('proposal-anggaran');
     });
 });
 
