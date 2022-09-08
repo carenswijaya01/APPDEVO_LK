@@ -1,8 +1,6 @@
 @extends('template.app')
 @section('content')
-    <div class="cover" style="background-image:url(images/COVER.PNG);
-	background-size: cover;
-	height: 120vh;">
+    <div class="cover" style="background-image:url(images/COVER.PNG);background-size: cover;height: 120vh;">
     <div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">

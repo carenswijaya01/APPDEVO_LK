@@ -1,64 +1,102 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.84.0">
-    <title>{{ config('app.name') }}</title>
-    <!-- Bootstrap core CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+@extends('template.app')
+@section('content')
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Laravel</title>
 
-
-
-<!-- Custom styles for this template -->
-<link href="/css/dashboard.css" rel="stylesheet">
-  </head>
-  <body>
-<div class="row">
-    <div class="col-md-4 offset-md-4 mt-5">
-        <div class="card">
-            <div class="card-header bg-dark text-light">
-                Login Admin
-            </div>
-            <div class="card-body p-2">
-                <form action="" method="post">
+    <!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="/css/util.css">
+        <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <!--===============================================================================================-->
+</head>
+<body> 
+    <div class="cover" style="background-image:url(/images/COVER.PNG);background-size: cover;height: 120vh;">
+    <div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-pic js-tilt" data-tilt>
+					<img src="/images/img-01.png" alt="IMG">
+                </div>
+                <form class="login100-form validate-form" action="" method="post" enctype="/multipart/form-data">
+                    <span class="login100-form-title">
+                        Login Admin/Kegiatan
+                    </span>
                     @csrf
-                    <div class="form-group">
-                      <input type="email"
-                        class="form-control{{ $errors->has('email') ? ' is-invalid':'' }}"
-                        name="email"
-                        placeholder="Email" />
-                        @error('email')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
+            
+                    @if($errors->any())
+                        @foreach($errors->all() as $error)
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{$error}}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endforeach
+                    @endif
+            
+                    <div class="wrap-input100 validate-input" data-validate = "Email yang Valid dibutuhkan: ex@uksw.edu">
+                        <input class="input100" type="email" name="email" placeholder="Email">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </span>
                     </div>
-                    <div class="form-group">
-                      <input type="password"
-                        class="form-control{{ $errors->has('password') ? ' is-invalid':'' }}"
-                        name="password"
-                        placeholder="Password" />
-                        @error('password')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
+            
+                    <div class="wrap-input100 validate-input" data-validate = "Password Dibutuhkan">
+                        <input class="input100" type="password" name="password" placeholder="Password">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </span>
                     </div>
-                    <div class="form-check form-group">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input" name="remember">
-                            Remember Me
-                        </label>
+            
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn">
+                            Login
+                        </button>
                     </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-dark btn-block">Login</button>
+            
+                    <div class="text-center p-t-12">
+                        <span class="txt1">
+                            <input type="checkbox" name="remember" id="remember"><label for="remember">Ingatkan Saya</label>
+                        </span>
+                    </div>
+                    <div class="text-center p-t-136">
+                    
                     </div>
                 </form>
+
             </div>
         </div>
     </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="/js/dashboard.js"></script>
+    <!--===============================================================================================-->
+    <script src="/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+	<script src="/vendor/bootstrap/js/popper.js"></script>
+	<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+	<script src="/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+	<script src="/vendor/tilt/tilt.jquery.min.js"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+<!--===============================================================================================-->
+	<script src="/js/main.js"></script>
 </body>
-</html>
+
+@endsection
