@@ -305,7 +305,7 @@ a.article, a.article:hover {
                   @endcan
                   @can('role','admin')
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="">
+                    <a class="nav-link active" aria-current="page" href="{{ route('proposal-kegiatan') }}">
                       <i class="fa-sharp fa-solid fa-file fa-lg mx-2 my-2"></i>
                       Proposal Kegiatan
                     </a>
@@ -335,14 +335,7 @@ a.article, a.article:hover {
                     </a>
                   </li>
                   @endcan
-                  @can('role','superadmin')
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ route('proposal-kegiatan') }}">
-                      
-                      Menu 3
-                    </a>
-                  </li>
-                  @endcan
+                  
              @endguest
             </ul>
         </nav>
