@@ -6,7 +6,7 @@
     <div class="row mt-1">
         <div class="col-12">
             <div class="card p-4" style="background-color:#ffffff;box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;">
-                <h1 class="mt-2">Hai,<b>{{$user->name}}</b> Berikut poin kamu.</h1>
+                <h1 class="mt-2">Point :<b>{{$user->name}}</b></h1>
                 <hr class=" " style="height: 2px;">
                 <div class="text-right">
                     <a href="{{url('/admin/points/create')}}" class="btn mb-1 col-2 text-light" style="background:#003289d2">Tambah Data Baru</a>

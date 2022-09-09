@@ -19,31 +19,48 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/stylesa.css" rel="stylesheet" />
 </head>
-<body>
+<body style="background-color: #f2f2f2;margin:70px">
 
-    <h2 class="text-center mt-2">Point: <b>{{$user->name}}</b></h2>
-    <br/>
-    <br/>
-
-    <table  class="table">
-        <thead class="table-dark">
-        <tr>
-            <th>Mahasiswa</th>
-            <th>FILE</th>
-            <th>Tipe Point</th>
-            <th>POINT</th>
-        </tr>
-        </thead>
-        @foreach($points as $p)
-            <tr>
-                <td>{{$p->user->name}}</td>
-                <td><a target="_blank" href="{{asset('storage/'.$p->file)}}">{{$p->user->name}}.pdf</a></td>
-                <td>{{$p->type_point->name}}</td>
-                <td>{{$p->point}}</td>
-            </tr>
-        @endforeach
-    </table>
-    {{$points->links()}}
+    <div class="container-2xxl">
+        <div class="row mt-1">
+            <div class="col-12">
+                <div class="card p-4" style="background-color:#ffffff;box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;">
+                    <h2 class="mt-2">Point: <b>{{$user->name}}</h1>
+                    <hr class=" " style="height: 2px;">
+                    <div class="text-right">
+                        <a href="{{route('login')}}" class="btn btn-md mb-3 text-light" style="background:#003289">Kembali</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="card p-4 mt-4" style="box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;">
+                    <div class="row mt-1">
+                      <div class="col-lg-12">
+                        <table  class="table">
+                            <thead  class="text-light" style="background:#003289" >
+                            <tr>
+                                <th>Mahasiswa</th>
+                                <th>FILE</th>
+                                <th>Tipe Point</th>
+                                <th>POINT</th>
+                            </tr>
+                            </thead>
+                            @foreach($points as $p)
+                                <tr>
+                                    <td>{{$p->user->name}}</td>
+                                    <td><a target="_blank" href="{{asset('storage/'.$p->file)}}">{{$p->user->name}}.pdf</a></td>
+                                    <td>{{$p->type_point->name}}</td>
+                                    <td>{{$p->point}}</td>
+                                </tr>
+                            @endforeach
+                        </table>
+                        {{$points->links()}}
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>    
 
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

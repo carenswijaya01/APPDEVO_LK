@@ -318,14 +318,14 @@
         <ul class="nav flex-column mt-2">
             @guest("admin")
             @else
-                @can('role', '')
+                {{-- @can('role', '')
                     <li class="nav-item ">
                         <a class="nav-link active" aria-current="page" href="{{ route('daftarKegiatan') }}">
                             <i class="fa-sharp fa-solid fa-clipboard-list fa-lg mx-2 my-2"></i>
                             Daftar Kegiatan
                         </a>
                     </li>
-                @endcan
+                @endcan --}}
                 {{-- INPOST --}}
                 @can('role', Role::INPOS)
                     <li class="nav-item">
@@ -342,17 +342,68 @@
                     </li>
                 @endcan
 
-                @can('role',[Role::BIDANG, Role::SEKRETARIS_SMF, Role::SEKRETARIS_BPMF, Role::KOMISI_A, Role::KEGIATAN])
+                
+
+                {{-- Komisi A --}}
+                @can('role',[Role::KOMISI_A])
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('proposal-kegiatan') }}">
+                        <a class="nav-link active" aria-current="page" href="{{ route('proposal-kegiatan-komisia') }}">
                             <i class="fa-sharp fa-solid fa-file fa-lg mx-2 my-2"></i>
                             Proposal Kegiatan
                         </a>
                     </li>
                 @endcan
-                @can('role',[Role::BIDANG, Role::SEKRETARIS_BPMF, Role::BENDAHARA_SMF, Role::KOMISI_C, Role::KEGIATAN])
+
+                {{-- Sekretaris BPMF --}}
+                @can('role',[Role::SEKRETARIS_BPMF])
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('proposal-anggaran') }}">
+                        <a class="nav-link active" aria-current="page" href="{{ route('proposal-kegiatan-sekretarisbpmf') }}">
+                            <i class="fa-sharp fa-solid fa-file fa-lg mx-2 my-2"></i>
+                            Proposal Kegiatan
+                        </a>
+                    </li>
+                @endcan
+                @can('role',[Role::SEKRETARIS_BPMF])
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ route('proposal-anggaran-sekretarisbpmf') }}">
+                            <i class="fa-sharp fa-solid fa-file-invoice-dollar fa-lg mx-2 my-2"></i>
+                            Proposal Anggaran
+                        </a>
+                    </li>
+                @endcan
+
+                {{-- Bidang --}}
+                @can('role',[Role::BIDANG])
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ route('proposal-kegiatan-bidang') }}">
+                        <i class="fa-sharp fa-solid fa-file fa-lg mx-2 my-2"></i>
+                        Proposal Kegiatan
+                    </a>
+                </li>
+                @endcan
+                @can('role',[Role::BIDANG])
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ route('proposal-anggaran-bidang') }}">
+                            <i class="fa-sharp fa-solid fa-file-invoice-dollar fa-lg mx-2 my-2"></i>
+                            Proposal Anggaran
+                        </a>
+                    </li>
+                @endcan
+
+                {{-- Bendahara SMF --}}
+                @can('role',[Role::BENDAHARA_SMF])
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ route('proposal-anggaran-bendahara') }}">
+                            <i class="fa-sharp fa-solid fa-file-invoice-dollar fa-lg mx-2 my-2"></i>
+                            Proposal Anggaran
+                        </a>
+                    </li>
+                @endcan
+
+                {{-- Komisi C --}}
+                @can('role',[Role::KOMISI_C])
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ route('proposal-anggaran-komisic') }}">
                             <i class="fa-sharp fa-solid fa-file-invoice-dollar fa-lg mx-2 my-2"></i>
                             Proposal Anggaran
                         </a>

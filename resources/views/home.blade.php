@@ -21,10 +21,10 @@
     <link href="css/stylesa.css" rel="stylesheet" />
 </head>
 
-<body class="d-flex flex-column h-100">
+<body class="d-flex flex-column h-100" style="background-color: #f2f2f2;" >
     <main class="flex-shrink-0">
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background:#003289">
             <div class="container px-5">
                <a class="navbar-brand" href="/">{{ auth()->user()->name }}</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -34,7 +34,7 @@
                        <li class="nav-item"><a class="nav-link" href="{{ route('update-password-user') }}">Ganti Password&nbsp;&nbsp;&nbsp;</a></li>
                         <form action="{{ route('logout') }}" method="post">
                             @csrf
-                            <button type="submit" class="btn btn-outline-light">logout</button>
+                            <button type="submit" class="btn btn-outline-light">Logout</button>
                         </form>
 
                     </ul>
@@ -42,53 +42,65 @@
             </div>
         </nav>
 
-        <!-- isi nya -->
-        <!-- Jumbotron -->
-        <div class="container-fluid my-5">
-            <div class="jumbotron jumbotron-fluid text-center">
-                <p class="fs-1 fw-bolder">Poin KKM</p>
-
-            </div>
-        </div>
-        <!-- Jumbotron -->
-        <div class="container-fluid my-5">
-            <div class="jumbotron jumbotron-fluid">
-
-    <a href="{{ route('points.show.user')}}" class="btn btn-sm btn-primary mb-3">Detail Point</a>
-
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th scope="col">Jenis Poin</th>
-                            <th scope="col">Min.Poin</th>
-                            <th scope="col">Jumlah Poin</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($points as $point)
-
-                        <tr>
-                            <th scope="row">{{ $point->name }}</th>
-                            <td>{{ $point->limit }}</td>
-                            <td>{{ $point->point }}</td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-                <hr>
-                <p class="fs-5 fw-bolder">Target Poin</p>
-                <div class="progress">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: {{$result}}%" aria-valuenow="2" aria-valuemin="0" aria-valuemax="4"></div>
+        <div class="container-2xxl" style="margin:70px">
+            <div class="row mt-1">
+                <div class="col-12">
+                    <div class="card p-4" style="background-color:#ffffff;box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;">
+                        <h1 class="mt-2">Poin KKM</h1>
+                        <hr class=" " style="height: 2px;">
+                        <div class="text-right">
+                            <a href="{{ route('points.show.user')}}" class="btn btn-md mb-3 text-light" style="background:#003289">Detail Point</a>
+                        </div>
+                       
+                    </div>
                 </div>
+                <div class="col-12">
+                    <div class="card p-4 mt-4" style="box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;">
+                        <div class="row mt-1">
+                          <div class="col-lg-12">
+                            <p class="fs-5 fw-bolder">Target Poin</p>
+                            <div class="progress">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: {{$result}}%" aria-valuenow="2" aria-valuemin="0" aria-valuemax="4"></div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="card p-4 mt-4" style="box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;">
+                        <div class="row mt-1">
+                          <div class="col-lg-12">
+                            <table class="table table-bordered">
+                                <thead class="text-light" style="background:#003289">
+                                    <tr>
+                                        <th scope="col">Jenis Poin</th>
+                                        <th scope="col">Min.Poin</th>
+                                        <th scope="col">Jumlah Poin</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($points as $point)
+            
+                                    <tr>
+                                        <th scope="row">{{ $point->name }}</th>
+                                        <td>{{ $point->limit }}</td>
+                                        <td>{{ $point->point }}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                          
+                        </div>
+                    </div>
+                </div>
+                
             </div>
-            <br>
-            <br>
-        </div>
+          </div>
+
+    
         <br>
 
     </main>
     <!-- Footer-->
-    <footer class="bg-dark py-4 mt-auto">
+    <footer class="text-light py-4 mt-auto"  style="background:#003289">
         <div class="container px-5">
             <div class="row align-items-center justify-content-between flex-column flex-sm-row">
                 <div class="col-auto">

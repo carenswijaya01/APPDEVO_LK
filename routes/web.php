@@ -45,16 +45,24 @@ Route::group([
     Route::resource('pengumuman', PengumumanController::class);
 
     // ADMIN & SUPER ADMIN
-//    ['auth:'. Role::SUPERADMIN.','.Role::ADMIN]
+    //    ['auth:'. Role::SUPERADMIN.','.Role::ADMIN]
     Route::middleware(['auth:admin'])->group(function () {
         Route::post('logout', 'LoginAdminController@logout')->name('admin.logout');
         Route::get('/', fn () => view('dashboard'))->name('dashboard');
         Route::get('/tentang-kegiatan', fn () => view('pemegang-kegiatan.proposal-kegiatan.tentang-kegiatan'))->name('tentang-kegiatan');
         Route::get('/tentang-anggaran', fn () => view('pemegang-kegiatan.proposal-anggaran.tentang-anggaran'))->name('tentang-anggaran');
+        Route::get('/proposal-kegiatan-bidang', fn () => view('role.bidang.proposal-kegiatan-bidang'))->name('proposal-kegiatan-bidang');
+        Route::get('/proposal-anggaran-bidang', fn () => view('role.bidang.proposal-anggaran-bidang'))->name('proposal-anggaran-bidang');
+        Route::get('/proposal-anggaran-bendahara', fn () => view('role.bendahara-smf.proposal-anggaran-bendahara'))->name('proposal-anggaran-bendahara');
+        Route::get('/proposal-anggaran-komisic', fn () => view('role.komisic.proposal-anggaran-komisic'))->name('proposal-anggaran-komisic');
+        Route::get('/proposal-kegiatan-sekretarissmf', fn () => view('role.sekretaris-smf.proposal-kegiatan-sekretarissmf'))->name('proposal-kegiatan-sekretarissmf');
+        Route::get('/proposal-kegiatan-sekretarisbpmf', fn () => view('role.sekretaris-bpmf.proposal-kegiatan-sekretarisbpmf'))->name('proposal-kegiatan-sekretarisbpmf');
+        Route::get('/proposal-anggaran-sekretarisbpmf', fn () => view('role.sekretaris-bpmf.proposal-anggaran-sekretarisbpmf'))->name('proposal-anggaran-sekretarisbpmf');
+        Route::get('/proposal-kegiatan-komisia', fn () => view('role.komisia.proposal-kegiatan-komisia'))->name('proposal-kegiatan-komisia');
     });
 
     //    SUPER ADMIN
-    Route::middleware(['auth:admin', 'can:role,'. '"'. Role::SUPERADMIN. '\''])->group(function () {
+    Route::middleware(['auth:admin', 'can:role,' . '"' . Role::SUPERADMIN . '\''])->group(function () {
         // CRUD ADMIN
         Route::resource('/admin', AdminController::class);
         // TYPE POINT
@@ -65,7 +73,7 @@ Route::group([
     });
 
     //    INPOS
-    Route::middleware(['auth:admin', 'can:role,'.'"'. Role::INPOS.'\''])->group(function () {
+    Route::middleware(['auth:admin', 'can:role,' . '"' . Role::INPOS . '\''])->group(function () {
         // DAFTAR-KEGIATAN
         Route::get('/validate-memberprogram', [MemberProgramController::class, 'show']);
         Route::post('/validate-memberprogram', [MemberProgramController::class, 'update']);

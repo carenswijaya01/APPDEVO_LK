@@ -31,45 +31,60 @@
     <script type="text/javascript" src="js/trix.js"></script>
 </head>
 
-<body>
+<body class="my-5" style="background-color: #f2f2f2;">
 
-
-    <span class="text-center">
-        <h2>Ganti Password</h2>
-
-        @if ($errors->updatePassword->any())
-        @foreach($errors->updatePassword->all() as $error)
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            {{$error}}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <div class="container">
+        <div class="row mt-1">
+            <div class="col-12">
+                <div class="card p-4" style="background-color:#ffffff;box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;">
+                    <h1 class="mt-2">Ganti Password</h1>
+                    <hr class=" " style="height: 2px;">
+                    @if ($errors->updatePassword->any())
+                        @foreach($errors->updatePassword->all() as $error)
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{$error}}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        @endforeach
+                    @endif
+                   
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="card p-4 mt-4" style="box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;">
+                    <div class="row mt-1">
+                        <form action="{{ route('user-password.update') }}" method="post">
+                            @csrf
+                            @method('put')
+                            <input type="password" class="form-control @error('current_password') is-invalid @enderror"
+                                name="current_password" id="" placeholder="current-password">
+                            @error('current_password')
+                            <div class="invalid-feedback">{{$message}}</div>
+                            @enderror
+                            <br>
+                            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id=""
+                                placeholder="new password">
+                            @error('password')
+                            <div class="invalid-feedback">{{$message}}</div>
+                            @enderror
+                            <br>
+                            <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror"
+                                name="password_confirmation" id="" placeholder="password confirmation">
+                            @error('password_confirmation')
+                            <div class="invalid-feedback">{{$message}}</div>
+                            @enderror
+                            <br>
+                            <center>
+                                <a href="{{route('login')}}" class="btn btn-danger btn-md text-light col-2">Batal</a>
+                            
+                                <button type="submit" class="btn btn-md text-light col-3" style="background:#003289">Ganti Password</button>
+                            </center>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        @endforeach
-        @endif
-
-        <form action="{{ route('user-password.update') }}" method="post">
-            @csrf
-            @method('put')
-            <input type="password" class="form-control @error('current_password') is-invalid @enderror"
-                name="current_password" id="" placeholder="current-password">
-            @error('current_password')
-            <div class="invalid-feedback">{{$message}}</div>
-            @enderror
-            <br>
-            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id=""
-                placeholder="new password">
-            @error('password')
-            <div class="invalid-feedback">{{$message}}</div>
-            @enderror
-            <br>
-            <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror"
-                name="password_confirmation" id="" placeholder="password confirmation">
-            @error('password_confirmation')
-            <div class="invalid-feedback">{{$message}}</div>
-            @enderror
-            <br>
-            <button type="submit" class="btn btn-dark">Change password</button>
-        </form>
-    </span>
+      </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="js/script.js"></script>
