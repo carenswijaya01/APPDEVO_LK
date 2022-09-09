@@ -309,7 +309,7 @@
             </center>
             <h4>Lembaga Kemahasiswaan FTI</h4>
             <h6 class="mt-4">{{auth()->user()->role->role}}</h6>
-
+            
         </div>
 
         @php

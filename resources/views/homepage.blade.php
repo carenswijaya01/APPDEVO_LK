@@ -52,7 +52,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark" style="background: #003289">
             <div class="container px-5">
-                <a class="navbar-brand" href="/">Lembaga Kemahasiswaan</a>
+                <a class="navbar-brand" href="/">Lembaga Kemahasiswaan FTI</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -87,26 +87,26 @@
                 <div class="carousel-item active text-left">
                     <img src="/img/gambar1.png" class="d-block w-100 h-75" alt="...">
                     <div class="carousel-caption text-start d-none d-md-block">
-                        <h1 class="display-5 fw-bold">First slide label</h1>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                        <h1 class="display-5 fw-bold">Pelatihan Kepemimpinan</h1>
+                        <p>Pelatihan kepemimpinan dilakukan berdasarkan kurikulum pelatihan kepemimpinan mahasiswa, yang meliputi 4 tahap pelatihan yaitu: Pra Dasar, Dasar, Menengah dan Lanjut.</p>
                         <!-- make button show more -->
-                        <a href="#" class="btn btn-outline-light" type="submit">Show more</a>
+                        <a href="https://fti.uksw.edu/kemahasiswaan.html" target="_blank" class="btn btn-outline-light" type="submit">Show more</a>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="/img/gambar2.png" class="d-block w-100 h-75" alt="...">
                     <div class="carousel-caption text-start d-none d-md-block">
-                        <h1 class="display-5 fw-bold">Second slide label</h1>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                        <a href="#" class="btn btn-outline-light" type="submit">Show more</a>
+                        <h1 class="display-5 fw-bold">Pengembangan Penalaran</h1>
+                        <p>Pengembangan Penalaran dimaksudkan untuk memberikan kompetensi keilmuan pada mahasiswa, baik disipliner dan interdisipliner, yang dilakukan melalui kegiatan diskusi/seminar/lokakarya, penelitian individual dan kelompok, pengabdian masyarakat, penulisan ilmiah dan populer, serta keikutsertaan pada event-event seperti olimpiade matematika, fisika, accounting, kontes robot, english debate, lomba peradilan semu, dll.</p>
+                        <a href="https://fti.uksw.edu/kemahasiswaan.html" target="_blank" class="btn btn-outline-light" type="submit">Show more</a>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="/img/gambar3.png" class="d-block w-100 h-75" alt="...">
                     <div class="carousel-caption text-start d-none d-md-block">
-                        <h1 class="display-5 fw-bold">Third slide label</h1>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                        <a href="#" class="btn btn-outline-light" type="submit">Show more</a>
+                        <h1 class="display-5 fw-bold">Pengembangan Minat dan Bakat</h1>
+                        <p>Pengembangan minat dan bakat dilakukan melalui pembentukan Kelompok Bakat Minat (KBM) di bidang olahraga dan seni, pelatihan rutin dan pembinaan prestasi dan kebersamaan melalui keikutsertaan dalam event-event yang diselenggarakan di kampus dan luar kampus. Beberapa KBM yang ada dikampus mencakup KBM Olahraga dan Seni. KBM seni terdiri dari Paduan Suara Mahasiswa Voice of SWCU, Vokal Grup Lentera Kasih, Teater (Teras dan Kronis), Karawitan. Sedangkan KBM olahraga terdiri dari Basket, Volly, Sepak Bola, Bela Diri (Karate, Kempo, Taekwondo, Merpati Putih, Capoera, Jet Kun Do, dan Tarung Drajat).</p>
+                        <a href="https://fti.uksw.edu/kemahasiswaan.html" target="_blank" class="btn btn-outline-light" type="submit">Show more</a>
                     </div>
                 </div>
             </div>
