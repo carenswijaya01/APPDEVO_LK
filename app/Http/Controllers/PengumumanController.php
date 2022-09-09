@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pengumuman;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -10,7 +11,7 @@ class PengumumanController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth:admin', 'can:role,"admin"'])->except('show');
+        $this->middleware(['auth:admin', 'can:role,'. '"'. Role::INPOS. '\''])->except('show');
     }
     /**
      * Display a listing of the resource.

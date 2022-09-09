@@ -63,17 +63,17 @@
                     </div>
 
 
-                        <div class="wrap-input100 validate-input">
+{{--                        <div class="wrap-input100 validate-input">--}}
 
-                            <select class="input100 @error('role') is-invalid @enderror "
-                                id="inputGroupSelect01" name="role">
-                                <option value="admin" >Admin</option>
-                                <option value="event">Kegiatan</option>
-                            </select>
-                            @error('role')
-                            <div class="invalid-feedback">{{$message}}</div>
-                            @enderror
-                        </div>
+{{--                            <select class="input100 @error('role') is-invalid @enderror "--}}
+{{--                                id="inputGroupSelect01" name="role">--}}
+{{--                                <option value="admin" >Admin</option>--}}
+{{--                                <option value="event">Kegiatan</option>--}}
+{{--                            </select>--}}
+{{--                            @error('role')--}}
+{{--                            <div class="invalid-feedback">{{$message}}</div>--}}
+{{--                            @enderror--}}
+{{--                        </div>--}}
 
 
                     <div class="container-login100-form-btn">

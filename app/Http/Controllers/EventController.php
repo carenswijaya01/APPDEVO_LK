@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -15,7 +16,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        $event = Admin::where('role', 'event')->paginate(10);
+        $event = Admin::where('role_id', Role::getId(Role::KEGIATAN))->paginate(10);
         return view('event.index', ['events'=>$event]);
     }
 
@@ -44,7 +45,7 @@ class EventController extends Controller
             'password'   => 'required | confirmed',
         ]);
         $data['password'] = Hash::make($data['password']);
-        $admin = Admin::create($data + ['role' => 'event']);
+        $admin = Admin::create($data + ['role_id' => Role::getId(Role::KEGIATAN)]);
 
         if ($admin) {
             //redirect dengan pesan sukses

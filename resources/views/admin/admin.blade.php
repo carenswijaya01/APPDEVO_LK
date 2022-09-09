@@ -25,7 +25,7 @@
                       </div>
                       <div class="col-6">
                         <label class="form-label">NIM</label>
-                        <input type="text" class="form-control form-control-lg @error('nim') is-invalid @enderror" id="nim" placeholder="NIM" name="nim">
+                        <input type="number" class="form-control form-control-lg @error('nim') is-invalid @enderror" id="nim" placeholder="NIM" name="nim">
                           @error('nim')
                         <div class="invalid-feedback">{{$message}}</div>            @enderror
                       </div>
@@ -45,15 +45,10 @@
                     <div class="row">
                       <div class="col-12">
                         <div class="input-group mb-3">
-                          <select class="form-select form-select-lg" id="inputGroupSelect01">
-                            <option selected>Pilih Role</option>
-                            <option value="1">Bidang</option>
-                            <option value="2">Sekretaris SMF</option>
-                            <option value="3">Sekretaris BPMF</option>
-                            <option value="4">Bendahara SMF</option>
-                            <option value="5">Komisi A</option>
-                            <option value="6">Komisi C</option>
-                            <option value="7">INPOST</option>
+                          <select class="form-select form-select-lg" id="inputGroupSelect01" name="role_id">
+                              @foreach($roles as $role)
+                                  <option value="{{$role->id}}">{{$role->role}}</option>
+                              @endforeach
                           </select>
                         </div>
                       </div>

@@ -53,7 +53,7 @@
                                 <th>{{$event->name}}</th>
                                 <th>{{$event->nim}}</th>
                                 <th>{{$event->email}}</th>
-                                <th>{{$event->role}}</th>
+                                <th>{{$event->role->role}}</th>
                                 <th>
                                     <a href="{{ route('event.edit',$event->id)}}" class="btn btn-success">Edit</a>
                                     <form action="{{ route('event.destroy',$event->id) }}" method="POST"

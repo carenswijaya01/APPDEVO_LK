@@ -9,6 +9,7 @@ use App\Http\Controllers\TypePointController;
 use App\Models\Pengumuman;
 use Illuminate\Support\Facades\Route;
 
+use App\Models\Role;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,7 +45,8 @@ Route::group([
     Route::resource('pengumuman', PengumumanController::class);
 
     // ADMIN & SUPER ADMIN
-    Route::middleware(['auth:admin,event'])->group(function () {
+//    ['auth:'. Role::SUPERADMIN.','.Role::ADMIN]
+    Route::middleware(['auth:admin'])->group(function () {
         Route::post('logout', 'LoginAdminController@logout')->name('admin.logout');
         Route::get('/', fn () => view('dashboard'))->name('dashboard');
         Route::get('/tentang-kegiatan', fn () => view('pemegang-kegiatan.proposal-kegiatan.tentang-kegiatan'))->name('tentang-kegiatan');
@@ -52,7 +54,7 @@ Route::group([
     });
 
     //    SUPER ADMIN
-    Route::middleware(['auth:admin', 'can:role,"superadmin"'])->group(function () {
+    Route::middleware(['auth:admin', 'can:role,'. '"'. Role::SUPERADMIN. '\''])->group(function () {
         // CRUD ADMIN
         Route::resource('/admin', AdminController::class);
         // TYPE POINT
@@ -62,13 +64,13 @@ Route::group([
         Route::resource('event', EventController::class);
     });
 
-    //    ADMIN
-    Route::middleware(['auth:admin', 'can:role,"admin"'])->group(function () {
+    //    INPOS
+    Route::middleware(['auth:admin', 'can:role,'.'"'. Role::INPOS.'\''])->group(function () {
         // DAFTAR-KEGIATAN
         Route::get('/validate-memberprogram', [MemberProgramController::class, 'show']);
         Route::post('/validate-memberprogram', [MemberProgramController::class, 'update']);
         // INPUT POINT
-        route::resource('/points', pointsController::class);
+        route::resource('points', pointsController::class);
         // Kegiatan
         Route::get('/daftarKegiatan', 'KegiatanController@index')->name('daftarKegiatan');
         Route::get('/tambahKegiatan', 'KegiatanController@create')->name('tambahKegiatan');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,11 +23,10 @@ class LoginAdminController extends Controller
         $credentials = $request->validate([
             'email' => 'required|email|exists:admins',
             'password' => 'required',
-            'role' => 'required'
         ]);
 
-        if ($request->role != 'event')
-            $credentials['role'] = ['admin', 'superadmin'];
+//        if ($request->role != Role::KEGIATAN)
+//            $credentials['role'] = ['admin', 'superadmin'];
 
         if (Auth::guard('admin')->attempt($credentials, $request->remember)) {
             $request->session()->regenerate();

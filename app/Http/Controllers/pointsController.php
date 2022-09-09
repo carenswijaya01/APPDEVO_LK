@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Point;
 use App\Models\TypePoint;
+use DB;
 use Illuminate\Http\Request;
 use Storage;
 
@@ -86,10 +87,9 @@ class pointsController extends Controller
 
     public function detailPoint()
     {
-
+        DB::statement("SET SQL_MODE = ''");
         $points = Point::where('user_id', auth()->id())->join('type_points', 'type_points.id', '=', 'points.type_point_id')
-            ->selectRaw('type_points.name, type_points.limit, sum(point) as point')->groupBy('type_points.name')->get();
-
+            ->selectRaw('type_points.name, type_points.limit, sum(point) as point')->groupBy('type_points.name','type_points.limit')->get();
         $result = 0;
         foreach ($points as $point)
             if ($point->point >= $point->limit)

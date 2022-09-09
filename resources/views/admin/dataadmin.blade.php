@@ -28,8 +28,8 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         @endif
-            
-                      
+
+
                         <table class="table table-striped table-bordered nowrap" style="width:100%">
                             <thead style="background:#003289;" class="text-light">
                                 <tr>
@@ -50,7 +50,7 @@
                                     <th>{{$d->nim}}</th>
                                     <th>{{$d->name}}</th>
                                     <th>{{$d->email}}</th>
-                                    <th>{{$d->role}}</th>
+                                    <th>{{$d->role->role}}</th>
                                     <th>
                                         <a href="{{ route('admin.edit',$d->id)}}" class="btn btn-success">Edit</a>
                                         <form action="{{ route('admin.destroy',$d->id) }}" method="POST" class="d-inline">

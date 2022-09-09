@@ -13,14 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('admins', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->string('nim');
-            $table->string('name');
-            $table->string('email');
-            $table->foreignId('role_id')->constrained();
-            $table->string('password');
-            $table->timestamps();
+            $table->string('role')->unique();
+            $table->boolean('sub_admin')->default(true);
         });
     }
 
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('admins');
+        Schema::dropIfExists('roles');
     }
 };
