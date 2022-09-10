@@ -309,7 +309,7 @@
             </center>
             <h4>Lembaga Kemahasiswaan FTI</h4>
             <h6 class="mt-4">{{auth()->user()->role->role}}</h6>
-            
+
         </div>
 
         @php
@@ -342,7 +342,7 @@
                     </li>
                 @endcan
 
-                
+
 
                 {{-- Komisi A --}}
                 @can('role',[Role::KOMISI_A])
@@ -365,7 +365,7 @@
                 @endcan
                 @can('role',[Role::SEKRETARIS_BPMF])
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('proposal-anggaran-sekretarisbpmf') }}">
+                        <a class="nav-link active" aria-current="page" href="{{ route('proposal-anggaran') }}">
                             <i class="fa-sharp fa-solid fa-file-invoice-dollar fa-lg mx-2 my-2"></i>
                             Proposal Anggaran
                         </a>
@@ -383,7 +383,7 @@
                 @endcan
                 @can('role',[Role::BIDANG])
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('proposal-anggaran-bidang') }}">
+                        <a class="nav-link active" aria-current="page" href="{{ route('proposal-anggaran') }}">
                             <i class="fa-sharp fa-solid fa-file-invoice-dollar fa-lg mx-2 my-2"></i>
                             Proposal Anggaran
                         </a>
@@ -393,7 +393,7 @@
                 {{-- Bendahara SMF --}}
                 @can('role',[Role::BENDAHARA_SMF])
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('proposal-anggaran-bendahara') }}">
+                        <a class="nav-link active" aria-current="page" href="{{ route('proposal-anggaran') }}">
                             <i class="fa-sharp fa-solid fa-file-invoice-dollar fa-lg mx-2 my-2"></i>
                             Proposal Anggaran
                         </a>
@@ -403,7 +403,7 @@
                 {{-- Komisi C --}}
                 @can('role',[Role::KOMISI_C])
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('proposal-anggaran-komisic') }}">
+                        <a class="nav-link active" aria-current="page" href="{{ route('proposal-anggaran') }}">
                             <i class="fa-sharp fa-solid fa-file-invoice-dollar fa-lg mx-2 my-2"></i>
                             Proposal Anggaran
                         </a>

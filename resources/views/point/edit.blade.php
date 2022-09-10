@@ -55,7 +55,7 @@
         <label for="title">Tipe Poin</label>
         <select name="type_point_id" class="form-select">
             @foreach ($typePoints as $typePoint)
-            <option @selected($typePoint->id == $point->type_point_id) value="{{ $typePoint->id}}">{{ $typePoint->name}}
+            <option {{$typePoint->id == $point->type_point_id ? 'selected' : null}} value="{{ $typePoint->id}}">{{ $typePoint->name}}
             </option>
             @endforeach
         </select><br>

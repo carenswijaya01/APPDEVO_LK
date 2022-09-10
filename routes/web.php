@@ -5,6 +5,7 @@ use App\Http\Controllers\pointsController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\ProposalAnggaranController;
 use App\Http\Controllers\TypePointController;
 use App\Models\Pengumuman;
 use Illuminate\Support\Facades\Route;
@@ -44,8 +45,7 @@ Route::group([
     // Pengumuman
     Route::resource('pengumuman', PengumumanController::class);
 
-    // ADMIN & SUPER ADMIN
-    //    ['auth:'. Role::SUPERADMIN.','.Role::ADMIN]
+    // ALL ADMIN ROLE
     Route::middleware(['auth:admin'])->group(function () {
         Route::post('logout', 'LoginAdminController@logout')->name('admin.logout');
         Route::get('/', fn () => view('dashboard'))->name('dashboard');
@@ -59,6 +59,10 @@ Route::group([
         Route::get('/proposal-kegiatan-sekretarisbpmf', fn () => view('role.sekretaris-bpmf.proposal-kegiatan-sekretarisbpmf'))->name('proposal-kegiatan-sekretarisbpmf');
         Route::get('/proposal-anggaran-sekretarisbpmf', fn () => view('role.sekretaris-bpmf.proposal-anggaran-sekretarisbpmf'))->name('proposal-anggaran-sekretarisbpmf');
         Route::get('/proposal-kegiatan-komisia', fn () => view('role.komisia.proposal-kegiatan-komisia'))->name('proposal-kegiatan-komisia');
+
+        Route::get('/proposal-anggaran', [ProposalAnggaranController::class, 'indexStatus'])->name('proposal-anggaran');
+        Route::put('/tentang-anggaran-status/{proposalAnggaran}',[ProposalAnggaranController::class,'setStatus'])->name('tentang-anggaran-status');
+        Route::post('/tentang-anggaran-download/{proposalAnggaran}',[ProposalAnggaranController::class, 'download'])->name('tentang-anggaran-download');
     });
 
     //    SUPER ADMIN
@@ -86,9 +90,16 @@ Route::group([
         Route::get('/editKegiatan/{id}', 'KegiatanController@edit')->name('editKegiatan');
         Route::post('/updateKegiatan/{id}', 'KegiatanController@update')->name('updateKegiatan');
         Route::get('/deleteKegiatan/{id}', 'KegiatanController@destroy')->name('deleteKegiatan');
-        Route::get('/proposalKegiatan', fn () => view('proposal.proposal-kegiatan'))->name('proposal-kegiatan');
-        Route::get('/proposalAnggaran', fn () => view('proposal.proposal-anggaran'))->name('proposal-anggaran');
+//        Route::get('/proposalKegiatan', fn () => view('proposal.proposal-kegiatan'))->name('proposal-kegiatan');
+//        Route::get('/proposalAnggaran', fn () => view('proposal.proposal-anggaran'))->name('proposal-anggaran');
     });
+
+//    kegiatna
+    Route::middleware(['auth:admin', 'can:role,' . '"' . Role::KEGIATAN . '\''])->group(function () {
+       Route::get('/tentang-anggaran',[ProposalAnggaranController::class, 'index'])->name('tentang-anggaran');
+        Route::post('/tentang-anggaran',[ProposalAnggaranController::class, 'store'])->name('tentang-anggaran');
+    });
+
 });
 
 // MAHASISWA
