@@ -28,10 +28,10 @@ class RoleSeeder extends Seeder
                 'role' => Role::KEGIATAN,
                 'sub_admin' => false
             ],
-            [
-                'role' => Role::ADMIN,
-                'sub_admin' => true
-            ],
+            // [
+            //     'role' => Role::ADMIN,
+            //     'sub_admin' => true
+            // ],
             [
                 'role' => Role::BIDANG,
                 'sub_admin' => true
@@ -52,10 +52,10 @@ class RoleSeeder extends Seeder
                 'role' => Role::KOMISI_A,
                 'sub_admin' => true
             ],
-            [
-                'role' => Role::KOMISI_B,
-                'sub_admin' => true
-            ],
+            // [
+            //     'role' => Role::KOMISI_B,
+            //     'sub_admin' => true
+            // ],
             [
                 'role' => Role::KOMISI_C,
                 'sub_admin' => true

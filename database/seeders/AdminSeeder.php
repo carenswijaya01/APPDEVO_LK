@@ -24,12 +24,12 @@ class AdminSeeder extends Seeder
             'password'  => bcrypt('sadmin'),
         ]);
 
-        Admin::create([
-            'name'      => 'admin',
-            'email'     => 'admin@uksw.edu',
-            'nim'       => '672021888',
-            'role_id'      => Role::getId(Role::ADMIN),
-            'password'  => bcrypt('admin'),
-        ]);
+        // Admin::create([
+        //     'name'      => 'admin',
+        //     'email'     => 'admin@uksw.edu',
+        //     'nim'       => '672021888',
+        //     'role_id'      => Role::getId(Role::ADMIN),
+        //     'password'  => bcrypt('admin'),
+        // ]);
     }
 }

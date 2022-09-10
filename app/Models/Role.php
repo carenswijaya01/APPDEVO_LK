@@ -10,7 +10,7 @@ class Role extends Model
     use HasFactory;
 
     const SUPERADMIN = 'Superadmin';
-    const ADMIN = 'Admin';
+    // const ADMIN = 'Admin';
     const KEGIATAN = 'kegiatan';
     const MAHASISWA = 'Mahasiswa';
     const SEKRETARIS_SMF = 'Sekretaris SMF';
@@ -18,12 +18,12 @@ class Role extends Model
     const BENDAHARA_SMF = 'Bendahara SMF';
     const BIDANG = 'Bidang';
     const KOMISI_A = 'Komisi A';
-    const KOMISI_B = 'Komisi B';
+    // const KOMISI_B = 'Komisi B';
     const KOMISI_C = 'Komisi C';
     const INPOS = 'Inpos';
 
     public static function getId($role)
     {
-        return self::where('role',$role)->firstOrFail('id')->id;
+        return self::where('role', $role)->firstOrFail('id')->id;
     }
 }

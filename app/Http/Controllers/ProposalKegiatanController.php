@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ProposalAnggaran;
+use App\Models\ProposalKegiatan;
 use App\Models\Admin;
 use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 
-class ProposalAnggaranController extends Controller
+class ProposalKegiatanController extends Controller
 {
-
     private $validRole;
 
     public function __construct()
@@ -21,34 +20,35 @@ class ProposalAnggaranController extends Controller
 
     public function index()
     {
-        $datas = ProposalAnggaran::with('kegiatan')->where('admin_id', auth()->id())->get();
+        $datas = ProposalKegiatan::with('kegiatan')->where('admin_id', auth()->id())->get();
         $datass = Admin::where('id', auth()->id())->first();
         $roles = $this->validRole;
-        return view('pemegang-kegiatan.proposal-anggaran.tentang-anggaran', compact('datas', 'roles', 'datass'));
+        // dd($datass);
+        return view('pemegang-kegiatan.proposal-kegiatan.tentang-kegiatan', compact('datas', 'roles', 'datass'));
     }
 
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'file' => 'file|required|max:5120|mimes:xls,xlsx',
+            'file' => 'file|required|max:5120|mimes:doc,docx',
             'description' => 'required|string',
             'role_id' => 'required|numeric',
         ]);
 
         if (array_search($request->role_id, array_column($this->validRole, 'id')) !== false) {
-            $file = $request->file('file')->store('anggaran');
+            $file = $request->file('file')->store('kegiatan');
             $validated['file'] = $file;
 
-            ProposalAnggaran::create($validated + ['admin_id' => auth()->id()]);
-            return redirect()->route('tentang-anggaran')->with('success', 'Berhasil menambahkan proposal anggaran');
+            ProposalKegiatan::create($validated + ['admin_id' => auth()->id()]);
+            return redirect()->route('tentang-kegiatan')->with('success', 'Berhasil menambahkan proposal kegiatan');
         }
-        return redirect()->route('tentang-anggaran')->with('error', 'Gagal menambahkan proposal anggaran');
+        return redirect()->route('tentang-kegiatan')->with('error', 'Gagal menambahkan proposal kegiatan');
     }
 
-    public function download(ProposalAnggaran $proposalAnggaran)
+    public function download(ProposalKegiatan $proposalKegiatan)
     {
-        if (auth()->user()->role->role == $proposalAnggaran->role->role) {
-            return Storage::disk('public')->download($proposalAnggaran->file);
+        if (auth()->user()->role->role == $proposalKegiatan->role->role) {
+            return Storage::disk('public')->download($proposalKegiatan->file);
         }
         return redirect()->back()->with("error", "Gagal mendownload data");
     }
@@ -58,23 +58,23 @@ class ProposalAnggaranController extends Controller
     {
         $allowed = array_search(auth()->user()->role->role, array_column($this->validRole, 'id')) !== false;
 
-        $proposals = ProposalAnggaran::with('role')->where('role_id', auth()->user()->role_id)->get();
-        return view("role.proposal-anggaran-all", compact('proposals'));
+        $proposals = ProposalKegiatan::with('role')->where('role_id', auth()->user()->role_id)->get();
+        return view("role.proposal-kegiatan-all", compact('proposals'));
     }
 
     public function detailProposal($id)
     {
-        $datas = ProposalAnggaran::where('id', $id)->first();
+        $datas = ProposalKegiatan::where('id', $id)->first();
         // dd($datas);
-        return view("detailProposalAnggaran", compact('datas'));
+        return view("detailProposal", compact('datas'));
     }
 
-    public function setStatus(ProposalAnggaran $proposalAnggaran, Request $request)
+    public function setStatus(ProposalKegiatan $proposalKegiatan, Request $request)
     {
         $validated = $request->validate(['status' => 'required|in:fix,revisi']);
 
-        if (auth()->user()->role->role == $proposalAnggaran->role->role) {
-            ProposalAnggaran::where('id', $proposalAnggaran->id)->update($validated);
+        if (auth()->user()->role->role == $proposalKegiatan->role->role) {
+            ProposalKegiatan::where('id', $proposalKegiatan->id)->update($validated);
             return redirect()->back()->with('success', "Berhasil merubah status menjadi " . $request->status);
         }
         return redirect()->back()->with('error', "Gagal merubah status");

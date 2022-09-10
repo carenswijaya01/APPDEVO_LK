@@ -33,26 +33,26 @@
 
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="/img/jumbotron.png" class="d-block w-100" alt="..."  height="850px" >
-            <div class="carousel-caption d-none d-md-block" style="margin-bottom: 350px">
-              <h1>{{$pengumuman->judul}}</h1>
-              <h5>Lembaga Kemahasiswaan Fakultas Teknologi Informasi</h5>
-              <a href="#kegiatan"  class="btn btn-outline-light mt-4">Selengkapnya</a>
+            <div class="carousel-item active">
+                <img src="/img/jumbotron.png" class="d-block w-100" alt="..." height="850px">
+                <div class="carousel-caption d-none d-md-block" style="margin-bottom: 350px">
+                    <h1>{{$pengumuman->judul}}</h1>
+                    <h5>Lembaga Kemahasiswaan Fakultas Teknologi Informasi</h5>
+                    <a href="#kegiatan" class="btn btn-outline-light mt-4">Selengkapnya</a>
+                </div>
             </div>
-          </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
         </button>
-      </div>
+    </div>
 
-      
+
     <div class="row mt-2 p-4">
         <div class="container p-4" id="kegiatan">
             <div class="row justify-content-center card">
@@ -62,12 +62,16 @@
                 </div>
                 <div class="card-body text-center">
                     <div class="mt-4 row align-items-start d-inline-block ">
-                        <img src="{{ asset('storage/' . $pengumuman->gambar) }}" style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;" width="300px" height="700px" class="mb-4">
+                        <div class="card" style="border: none;">
+                            <center>
+                                <img src="{{ asset('storage/' . $pengumuman->gambar) }}" style="box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;" width="400px" height="600px" class="mb-4">
+                            </center>
+                        </div>
                         <div class="mt-2">
-                            <h5 class="fw-bold">Tanggal Post  : {{$pengumuman->created_at->toDateString()}}</h5>
+                            <h5 class="fw-bold">Tanggal Post : {{$pengumuman->created_at->toDateString()}}</h5>
                             <h5 class="fw-bold">Penyelenggara : {{$pengumuman->penyelenggara}}</h5>
-                            <h5 class="fw-bold">Link Kegiatan :</h5>
-    
+
+
                             <article class="mt-4">
                                 <div class="text-center">
                                     {!! $pengumuman->deskripsi !!}

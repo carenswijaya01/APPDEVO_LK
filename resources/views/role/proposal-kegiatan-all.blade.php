@@ -5,7 +5,7 @@
     <div class="row mt-1">
         <div class="col-12">
             <div class="card p-4" style="background-color:#ffffff;box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;">
-                <h1 class="mt-2">Daftar Proposal Anggaran {{auth()->user()->role->role}}</h1>
+                <h1 class="mt-2">Daftar Proposal Kegiatan {{auth()->user()->role->role}}</h1>
                 <hr class=" " style="height: 2px;">
 
             </div>
@@ -26,6 +26,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                         @endif
+
 
                         <table class="table table-striped table-bordered nowrap" style="width:100%">
                             <thead style="background:#003289;" class="text-light">
@@ -50,18 +51,19 @@
                                 <th>
                                     <div class="row">
                                         <div class="col-6">
-                                            <a href="{{ route('detail-proposal-anggaran',$proposal->id) }}" class="btn mb-1 col-2 text-light btn-primary btn-secondary col-12">Detail</a>
+                                            <a href="{{ route('detail-proposal-kegiatan',$proposal->id) }}" class="btn mb-1 col-2 text-light btn-primary btn-secondary col-12">Detail</a>
                                         </div>
                                         <div class="col-6">
-                                            <form action="{{route('tentang-anggaran-download',$proposal->id)}}" method="post" class="d-block">
+                                            <form action="{{route('tentang-kegiatan-download',$proposal->id)}}" method="post" class="d-block">
                                                 @csrf
                                                 <button type="submit" class="btn btn-primary btn-block mb-2">Unduh</button>
                                             </form>
                                         </div>
                                     </div>
+
                                     <div class="row">
                                         <div class="col-6">
-                                            <form action="{{route('tentang-anggaran-status',$proposal->id)}}" method="post">
+                                            <form action="{{route('tentang-kegiatan-status',$proposal->id)}}" method="post">
                                                 @csrf
                                                 @method('put')
                                                 <input type="hidden" name="status" value="revisi">
@@ -69,7 +71,7 @@
                                             </form>
                                         </div>
                                         <div class="col-6">
-                                            <form action="{{route('tentang-anggaran-status',$proposal->id)}}" method="post">
+                                            <form action="{{route('tentang-kegiatan-status',$proposal->id)}}" method="post">
                                                 @csrf
                                                 @method('put')
                                                 <input type="hidden" name="status" value="fix">
@@ -77,8 +79,6 @@
                                             </form>
                                         </div>
                                     </div>
-
-
                                 </th>
                             </tr>
                             @endforeach
